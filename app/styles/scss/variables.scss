@@ -1,14 +1,15 @@
 :root {
-    --color-background: #f6f6f6;
-    --color-primary: #15573f;
-    --color-primary-dark: #0c261c;
-    --color-secondary: #fd9872;
-    --color-tetriary: #75bc97;
+    --color-background: #E5E5E5;
+    --color-primary: #FF6666;
+    --color-secondary: #333333;
 
     --header-height: 50rem;
     --input-height: 4rem;
     --input-border: 1px solid #a8a8a8;
     --page-content-width: min(1000px, 80%);
+
+    --drop-shadow: 2px 4px 16px rgba(0, 0, 0, 0.12);
+    --button-shadow: 2px 4px 16px rgba(255, 102, 102, 0.4);
 
     @media (max-width: 900px) and (min-width: 768px) {
         --page-content-width: min(1000px, 85%);
