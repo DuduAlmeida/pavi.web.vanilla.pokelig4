@@ -1,18 +1,23 @@
 {
-  "name": "pavi.web.vanilla.pokelig4",
+  "name": "pokelig4",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon main.js",
-    "scss": "sass --watch styles/scss:styles/css"
-  },
-  "keywords": [],
+  "main": "./public/index.html",
   "author": "Eduardo Almeida",
-  "license": "ISC",
+  "scripts": {    
+    "app:start": "parcel ./public/index.html --open",
+    "socket:start": "nodemon ./socket/main.js",
+    "scss": "sass --watch app/styles/scss:app/styles/css"
+  },
   "dependencies": {
-    "node-sass": "^6.0.1",
+    "express": "^4.17.1",
     "nodemon": "^2.0.12",
+    "parcel": "1.12.4",
+    "regenerator-runtime": "^0.13.9",
     "socket.io": "^4.2.0"
-  }
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
+  },
+  "keywords": []
 }

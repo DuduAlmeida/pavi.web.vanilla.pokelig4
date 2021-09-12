@@ -2,8 +2,8 @@
 
 import 'regenerator-runtime/runtime';
 
-import { $ } from './app/utils/jquery.util';
-// import { IndexPage } from './app/index.page';
+// import { $ } from './app/utils/jquery.util';
+import { IndexPage } from './index.page';
 // import * as ButtonEvents from './app/events/buttons.events';
 // import * as DropdownEvents from './app/events/dropdown.events';
 
@@ -13,6 +13,6 @@ import { $ } from './app/utils/jquery.util';
 
 // #endregion Imports
 
-// const page = new IndexPage();
+const page = new IndexPage();
 
-console.log('Main');
+console.log(page);
