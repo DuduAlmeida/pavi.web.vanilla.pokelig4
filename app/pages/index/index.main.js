@@ -4,6 +4,7 @@ import 'regenerator-runtime/runtime';
 
 // import { $ } from './app/utils/jquery.util';
 import { IndexPage } from './index.page';
+import { PageBuilderComponent } from '../../components/page-builder.component';
 // import * as ButtonEvents from './app/events/buttons.events';
 // import * as DropdownEvents from './app/events/dropdown.events';
 
@@ -13,6 +14,12 @@ import { IndexPage } from './index.page';
 
 // #endregion Imports
 
+// #region OnInit
+
+const pageBuilder = new PageBuilderComponent({
+  listLinks: [],
+  listScripts: [ ],
+});
 const page = new IndexPage();
 
-console.log(page);
+// #endregion OnInit
