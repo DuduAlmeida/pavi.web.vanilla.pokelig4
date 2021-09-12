@@ -1,0 +1,18 @@
+{
+  "name": "pavi.web.vanilla.pokelig4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon main.js",
+    "scss": "sass --watch styles/scss:styles/css"
+  },
+  "keywords": [],
+  "author": "Eduardo Almeida",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^6.0.1",
+    "nodemon": "^2.0.12",
+    "socket.io": "^4.2.0"
+  }
+}

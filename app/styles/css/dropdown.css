@@ -1,0 +1,112 @@
+.dropdown {
+  width: 100%;
+  color: #fff;
+  user-select: none;
+  position: relative;
+  border-radius: 1.9rem;
+  display: flex;
+  flex-direction: column;
+}
+.dropdown__input {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--input-height);
+  color: #a8a8a8;
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: var(--input-height);
+  background: #ffffff;
+  border-radius: 1.9rem;
+  padding: 0 1.5rem;
+  border: var(--input-border);
+}
+.dropdown.open .dropdown__options {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+.dropdown.open .dropdown__input {
+  border-bottom: none;
+  border-radius: 1.9rem 1.9rem 0 0;
+}
+.dropdown__options {
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--input-height);
+  width: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.dropdown__options__option {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  color: #a8a8a8;
+  font-weight: 300;
+  font-size: 1.4rem;
+  padding: 0 1.5rem;
+  background: transparent;
+  height: var(--input-height);
+  transition: all 0.5s ease-in-out;
+  border-left: var(--input-border);
+  border-right: var(--input-border);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.dropdown__options__option.disabled {
+  opacity: 0 !important;
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+.dropdown__options__option:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #a8a8a8;
+}
+.dropdown__options__option.selected {
+  color: #fff;
+  background-color: var(--color-tetriary);
+}
+.dropdown__options__option:last-of-type {
+  border-bottom: var(--input-border);
+  border-radius: 0 0 1.9rem 1.9rem;
+}
+
+.arrow {
+  position: relative;
+  height: 15px;
+  width: 15px;
+}
+.arrow::before, .arrow::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  width: 0.1rem;
+  height: 100%;
+  transition: all 0.5s;
+}
+.arrow::before {
+  left: -5px;
+  transform: rotate(-45deg);
+  background-color: #a8a8a8;
+}
+.arrow::after {
+  left: 5px;
+  transform: rotate(45deg);
+  background-color: #a8a8a8;
+}
+
+/*# sourceMappingURL=dropdown.css.map */

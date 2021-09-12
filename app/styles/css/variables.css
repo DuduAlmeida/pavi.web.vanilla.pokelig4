@@ -1,0 +1,22 @@
+:root {
+  --color-background: #f6f6f6;
+  --color-primary: #15573f;
+  --color-primary-dark: #0c261c;
+  --color-secondary: #fd9872;
+  --color-tetriary: #75bc97;
+  --color-gray-8: #a8a8a8;
+  --color-gray-9: #a8a8a8;
+  --color-gray-filter: #797979;
+  --color-gray-dark: #848484;
+  --header-height: 50rem;
+  --input-height: 4rem;
+  --input-border: 1px solid #a8a8a8;
+  --page-content-width: min(1000px, 80%);
+}
+@media (max-width: 900px) and (min-width: 768px) {
+  :root {
+    --page-content-width: min(1000px, 85%);
+  }
+}
+
+/*# sourceMappingURL=variables.css.map */
