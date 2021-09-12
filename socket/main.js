@@ -8,7 +8,9 @@ const socketio = require('socket.io');
 
 // #region Settings
 
-app.use('/', express.static('events'));
+app.get('/', (req, res) => {
+	res.sendFile(__dirname + '/home.html');
+});
 
 const expressServer = app.listen(9000);
 const io = new socketio.Server(expressServer);
@@ -18,16 +20,16 @@ const io = new socketio.Server(expressServer);
 // #region OnStart Application
 
 io.on('connection', (socket) => {
-    socket.emit('messageFromServer', { data: 'Welcome to the socketio server!' });
+	socket.emit('messageFromServer', { data: 'Welcome to the socketio server!' });
 
-    socket.on('messageToServer', (dataFromClient) => {
-        console.log(dataFromClient);
-    });
+	socket.on('messageToServer', (dataFromClient) => {
+		console.log(dataFromClient);
+	});
 
-    socket.on('newMessageToServer', (msg) => {
-        console.log(msg);
-        io.emit('messageToClients', { text: msg.text });
-    });
+	socket.on('newMessageToServer', (msg) => {
+		console.log(msg);
+		io.emit('messageToClients', { text: msg.text });
+	});
 })
 
 // #endregion OnStart Application
