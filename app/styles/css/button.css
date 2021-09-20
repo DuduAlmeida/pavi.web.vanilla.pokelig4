@@ -3,12 +3,15 @@
   position: relative;
   transition: all 0.5s ease-in-out;
   width: 100%;
-  margin: 2.2rem 0;
+  border: none;
+  outline: none;
   max-width: 100%;
-  padding: 0.4rem 1.5rem;
+  margin: 2.2rem 0;
   border-radius: 2.5rem;
+  padding: 0.4rem 1.5rem;
   box-shadow: var(--button-shadow);
-  color: var(--color-primary) !important;
+  color: #fff;
+  background-color: var(--color-primary);
   font-weight: 300;
   font-size: 1.3rem;
   line-height: 2rem;
@@ -21,8 +24,7 @@
   transition: all 0.5s ease-in-out;
 }
 .pkm-btn:hover {
-  color: #fff !important;
-  background-color: var(--color-primary);
+  box-shadow: var(--button-shadow-hover);
   transition: all 0.5s ease-in-out;
 }
 .pkm-btn:hover > img {

@@ -1,5 +1,5 @@
 :root {
-    --color-background: #E5E5E5;
+    --color-background: #f5f5f5;
     --color-primary: #FF6666;
     --color-secondary: #333333;
 
@@ -10,8 +10,12 @@
 
     --drop-shadow: 2px 4px 16px rgba(0, 0, 0, 0.12);
     --button-shadow: 2px 4px 16px rgba(255, 102, 102, 0.4);
+    --button-shadow-hover: 4px 6px 18px rgba(255, 102, 102, 0.4), var(--drop-shadow);
 
     @media (max-width: 900px) and (min-width: 768px) {
         --page-content-width: min(1000px, 85%);
     }
 }
+
+
+@import './refactor.scss';

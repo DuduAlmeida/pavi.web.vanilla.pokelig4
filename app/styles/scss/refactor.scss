@@ -32,3 +32,5 @@ h6 {
 .d-none {
     display: none !important;
 }
+
+@import './button.scss', './dropdown.scss', './header.scss', './card.scss', './texts.scss';
