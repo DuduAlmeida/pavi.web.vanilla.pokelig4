@@ -5,7 +5,7 @@
   "main": "./public/index.html",
   "author": "Eduardo Almeida",
   "scripts": {
-    "app:start": "parcel ./public/index.html --open",
+    "app:start": "parcel ./public/*.html",
     "socket:start": "nodemon ./socket/main.js",
     "scss": "sass --watch app/styles/scss:app/styles/css"
   },
