@@ -15,7 +15,7 @@ export class PageBuilderComponent {
     this._listScripts = !!data && validateArray(data.listScripts) ? data.listScripts : [];
 
     this.updatePageHeader();
-    this.updatePageBody();
+    // this.updatePageBody();
   }
 
   updatePageHeader() {
@@ -33,10 +33,10 @@ export class PageBuilderComponent {
     headerReference.innerHTML += this._listLinks.map(itemLink => `<link rel="stylesheet" href="${itemLink}"/>`);
   }
 
-  updatePageBody() {
-    let bodyReference = $('body');
+  // updatePageBody() {
+  //   let bodyReference = $('body');
 
-    bodyReference.innerHTML += this._listScripts.map(itemScript => `<script src="${itemScript}"></script>`);
-  }
+  //   bodyReference.innerHTML += this._listScripts.map(itemScript => `<script src="${itemScript}"></script>`);
+  // }
 
 }
