@@ -27,12 +27,7 @@ export class PageBuilderComponent {
 
       <link rel="icon" href="https://cdn.cdnlogo.com/logos/p/74/pokemon.svg">
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-      <link rel="stylesheet" href="../app/styles/css/variables.css" />
-      <link rel="stylesheet" href="../app/styles/css/refactor.css" />
-      <link rel="stylesheet" href="../app/styles/css/dropdown.css" />
-      <link rel="stylesheet" href="../app/styles/css/card.css" />
-      <link rel="stylesheet" href="../app/styles/css/button.css" />
-      <link rel="stylesheet" href="../app/styles/css/header.css" />
+      
     `;
 
     headerReference.innerHTML += this._listLinks.map(itemLink => `<link rel="stylesheet" href="${itemLink}"/>`);

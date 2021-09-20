@@ -17,10 +17,8 @@ import { PageBuilderComponent } from '../../components/page-builder.component';
 // #region OnInit
 
 const pageBuilder = new PageBuilderComponent({
-  listLinks: [
-    "../app/styles/css/index.page.css",
-  ],
-  listScripts: [ ],
+  listLinks: [],
+  listScripts: [],
 });
 const page = new IndexPage();
 
