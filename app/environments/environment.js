@@ -1,8 +1,11 @@
 export const environment = {
     url: 'http://localhost:1234/',
     slugs: {
+        game: 'game.html',
         home: 'index.html',
+        awaitUser: 'await-user.html',
         insertName: 'insert-name.html',
+        selectPokemon: 'select-pokemon.html',
     },
 
     socket: {

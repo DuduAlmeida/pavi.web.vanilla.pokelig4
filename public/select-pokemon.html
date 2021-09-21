@@ -4,14 +4,27 @@
 <head>
   <link rel="stylesheet" href="../app/styles/css/variables.css" />
   
-  <!-- <link rel="stylesheet" href="../app/styles/css/index.page.css" /> -->
+  <link rel="stylesheet" href="../app/styles/css/select-pokemon.page.css" />
 </head>
 
 <body>
  
-  <h1>Select</h1>
-  <!-- <script src="../app/pages/index/index.main.js"></script>
-  <script src="../app/pages/index/index.page.js"></script> -->
+  <main class="select-pokemon">
+    <header class="select-pokemon__header">
+      <div class="select-pokemon__header__back">
+        <img src="../app/assets/img/back-arrow.svg" alt="Ir para página anterior">
+      </div>
+
+      <h1 class="select-pokemon__header__title pkm-title">Selecionar ícone</h1>
+    </header>
+
+    <div id="pkm-list" class="select-pokemon__list">
+
+    </div>
+  </main>
+  
+  <script src="../app/pages/select-pokemon/select-pokemon.main.js"></script>
+  <script src="../app/pages/select-pokemon/select-pokemon.page.js"></script>
 </body>
 
 </html>
