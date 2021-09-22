@@ -20,7 +20,7 @@ export class PageBuilderComponent {
 
   updatePageHeader() {
     let headerReference = $('head');
-    headerReference.innerHTML = `
+    headerReference.innerHTML += `
       <title>Poké Lig4</title>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
