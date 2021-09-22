@@ -3,29 +3,37 @@
 import 'regenerator-runtime/runtime';
 
 import { $ } from '../../utils/jquery.util';
+import { ListPokemonComponent } from '../../components/list-pokemon.component';
 
 // #endregion Imports
 
 export class SelectPokemonPage {
 
-    // #region Constructor
+	// #region Constructor
 
-    constructor() {
+	constructor() {
+		this.cardContainerReference = $('#pkm-list');
+		this.listComponent = new ListPokemonComponent();
 
-    }
+		this.fillCardContainer();
+	}
 
-    // #endregion Constructor
+	// #endregion Constructor
 
-    // #region Public Methods
+	// #region Public Methods
+
+	fillCardContainer() {
+		this.listComponent.insertListIntoHTML(
+			this.cardContainerReference
+		);
+	}
+
+	// #endregion Public Methods
+
+	// #region Private Methods
 
 
 
-    // #endregion Public Methods
-
-    // #region Private Methods
-
-
-
-    // #endregion Private Methods
+	// #endregion Private Methods
 
 }
