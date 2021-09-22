@@ -1,3 +1,11 @@
+// #region Imports
+
+import 'regenerator-runtime/runtime';
+
+import pokeImages from "../assets/img/pokemon/*.png";
+
+// #endregion Imports
+
 export const environment = {
     url: 'http://localhost:1234/',
     slugs: {
@@ -24,28 +32,28 @@ export const LIST_POKEMONS_MOCKED = {
         name: 'Pikachu',
         color: '#f4c430',
         alternativeColor: '#fffdd0',
-        imageUrl: environment.assets.pokemon + 'pikachu.png',
+        imageUrl: pokeImages.pikachu,
     },
     CHARMANDER: {
         id: 2,
         name: 'Charmander',
         color: '#b22222',
         alternativeColor: '#de3163',
-        imageUrl: environment.assets.pokemon + 'charmander.png',
+        imageUrl: pokeImages.charmander,
     },
     BULLBASAUR: {
         id: 3,
         name: 'Bullbasaur',
         color: '#8b008b',
         alternativeColor: '#9acd32',
-        imageUrl: environment.assets.pokemon + 'bullbasaur.png',
+        imageUrl: pokeImages.bullbasaur,
     },
     WARTORTLE: {
         id: 4,
         name: 'Wartortle',
         color: '#87cefa',
         alternativeColor: '#3db0f7',
-        imageUrl: environment.assets.pokemon + 'wartortle.png',
+        imageUrl: pokeImages.wartortle,
     },
 };
 
