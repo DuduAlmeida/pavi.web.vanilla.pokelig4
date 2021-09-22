@@ -25,6 +25,7 @@
   @extend .display-root;
 
   &__header {
+    margin: 1.5rem 0 3rem;
     position: relative;
 
     flex-direction: row;
@@ -34,23 +35,22 @@
     @extend .content-pattern;
 
     &__back {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 2.5rem;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 3rem;
       background-color: #fff;
-      box-shadow: var(--button-shadow);
+      box-shadow: var(--drop-shadow);
 
       @extend .display-root;
 
       img {
-
-        width: 2.4rem;
-        height: 2.4rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-left: -0.3rem;
       }
     }
 
     &__title {
-      margin: 0 0 3rem;
       width: calc(98% - 2.5rem);
 
       flex-direction: row;
@@ -64,11 +64,21 @@
     @extend .content-pattern;
 
     &__card {
+      height: 15rem !important;
+      min-height: 15rem !important;
+      max-height: 15rem !important;
+      margin: 0.5rem 0 0.5rem !important;
+
       @extend .display-root;
       @extend .content-pattern;
 
+      &:last-of-type {
+        margin: 0.5rem 0 3rem !important;
+      }
+
       &__image {
         max-width: 100%;
+        max-height: 15rem !important;
       }
     }
   }
