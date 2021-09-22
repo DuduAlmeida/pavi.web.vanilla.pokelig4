@@ -8,6 +8,7 @@ import pokeImages from "../assets/img/pokemon/*.png";
 
 export const environment = {
     url: 'http://localhost:1234/',
+
     slugs: {
         game: 'game.html',
         home: 'index.html',
@@ -15,15 +16,16 @@ export const environment = {
         insertName: 'insert-name.html',
         selectPokemon: 'select-pokemon.html',
     },
-
+    storageKey: {
+        currentUser: 'POKE_LIG4_USER',
+    },
     assets: {
         image: '../app/assets/img/',
         pokemon: '../app/assets/img/pokemon/',
     },
-
     socket: {
         baseUrl: "https://front-br-challenges.web.app/api/v2/",
-    }
+    },
 }
 
 export const LIST_POKEMONS_MOCKED = {
