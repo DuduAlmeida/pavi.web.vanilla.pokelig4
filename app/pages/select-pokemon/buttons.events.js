@@ -11,8 +11,12 @@ onReady(() => {
   $('#pokemon').addEventListener('click', (e) => {
     e.preventDefault();
 
-    console.log(e);
-
     goToNextPage(environment.slugs.awaitUser);
+  });
+
+  $('#backButton').addEventListener('click', (e) => {
+    e.preventDefault();
+
+    goToNextPage(environment.slugs.insertName);
   });
 })

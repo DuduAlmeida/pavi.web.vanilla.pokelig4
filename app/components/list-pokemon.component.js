@@ -10,12 +10,12 @@ export class ListPokemonComponent {
     this.listPokemons = Object.values(LIST_POKEMONS_MOCKED);
   }
 
-  insertListIntoHTML(containerReference) {
+  insertListIntoHTML(containerReference, parentClassName) {
     console.log('containerReference: ', containerReference);
     const listPokemonCard = this.listPokemons.map(pokemon => {
       return `
-      <div id="pokemon" class="select-pokemon__card pkm-card">
-        <div class="select-pokemon__card__image">
+      <div id="pokemon" class="${parentClassName}__card pkm-card">
+        <div class="${parentClassName}__card__image">
           <img src="${pokemon.imageUrl}" alt="Foto do ${pokemon.name}">
         </div>
       </div>

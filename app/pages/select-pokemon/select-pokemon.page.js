@@ -24,7 +24,8 @@ export class SelectPokemonPage {
 
 	fillCardContainer() {
 		this.listComponent.insertListIntoHTML(
-			this.cardContainerReference
+			this.cardContainerReference,
+			'select-pokemon__list'
 		);
 	}
 
