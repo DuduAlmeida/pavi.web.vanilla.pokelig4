@@ -4,7 +4,7 @@ export class User {
     this.name = "";
     this.pokemon = null;
     this.isPlaying = false;
-    this.pokemonName = null; //Pokemon is tracked by it name
+    // this.pokemonName = null; //Pokemon is tracked by it name
   }
 
 }

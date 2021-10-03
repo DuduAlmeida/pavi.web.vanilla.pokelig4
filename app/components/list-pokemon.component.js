@@ -11,10 +11,9 @@ export class ListPokemonComponent {
   }
 
   insertListIntoHTML(containerReference, parentClassName) {
-    console.log('containerReference: ', containerReference);
     const listPokemonCard = this.listPokemons.map(pokemon => {
       return `
-      <div id="pokemon" class="${parentClassName}__card pkm-card">
+      <div class="${parentClassName}__card pkm-card pokemon" pkm-name="${pokemon.name.toLocaleUpperCase()}">
         <div class="${parentClassName}__card__image">
           <img src="${pokemon.imageUrl}" alt="Foto do ${pokemon.name}">
         </div>
@@ -22,7 +21,6 @@ export class ListPokemonComponent {
       `;
     });
 
-    console.log('listPokemonCard: ', listPokemonCard);
     listPokemonCard.forEach(pokemonCard => {
       containerReference.innerHTML += pokemonCard;
     })
