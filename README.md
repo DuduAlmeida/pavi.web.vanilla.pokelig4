@@ -38,6 +38,16 @@ Feito para ser jogado de forma multiplayer, dois jogadores competem para tentar 
 
 ## Tecnologias Utilizadas
 
+São utilizadas no desenvolvimento do projeto as tecnologias:
+• Socket.io: Será utilizado para conversar entre as aplicações, facilitando a comunicação e
+identificação da finalização de turnos.
+• Babbel: Será utilizado para facilitar a organização da arquitetura do projeto vanilla.
+• Express.js: Conforme recomendado pela documentação do Socket.io para servidores, o express
+facilitará no desenvolvimento da api do jogo.
+• HTML5 (HiperTextMarkup Language): Será utilizado para criação visual (UI).
+• CSS3 (Cascading Style Sheets): Será utilizado para estilização da UI.
+• JavaScript: Será utilizado tanto no servidor do socket quanto no client side, para criação
+das regras de negócio.
 ## UI
 
 ## Vídeos Explicativos
