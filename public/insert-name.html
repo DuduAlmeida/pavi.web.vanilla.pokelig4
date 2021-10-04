@@ -3,15 +3,22 @@
 
 <head>
   <link rel="stylesheet" href="../app/styles/css/variables.css" />
-  
-  <!-- <link rel="stylesheet" href="../app/styles/css/index.page.css" /> -->
+
+  <link rel="stylesheet" href="../app/styles/css/index.page.css" />
+  <link rel="stylesheet" href="../app/styles/scss/input.scss" />
 </head>
 
 <body>
- 
-  <h1>Insert</h1>
-  <!-- <script src="../app/pages/index/index.main.js"></script>
-  <script src="../app/pages/index/index.page.js"></script> -->
+  <main class="home">
+    <h1 class="home__title pkm-title ">Identificação</h1>
+    
+    <span class="pkm-centered-text">Digite o seu nome:</span>
+    <input class="pkm-input" type="text" name="Nome" size="40"/> 
+    
+    <button id="btn-next-page" class="home__button pkm-btn">Continuar</button>
+  </main>
+  
+  <script src="../app/pages/index/index.page.js"></script>
 </body>
 
 </html>

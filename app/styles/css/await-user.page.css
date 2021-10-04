@@ -1,0 +1,17 @@
+.pkm-await-panel {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 60rem;
+  width: 60rem;
+  background-color: white;
+  box-shadow: 2px 4px 16px #d6d6d6;
+  border-radius: 0.5rem;
+}
+
+.pkm-await-img {
+  margin: 10rem;
+}
+
+/*# sourceMappingURL=await-user.page.css.map */

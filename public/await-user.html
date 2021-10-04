@@ -4,14 +4,31 @@
 <head>
   <link rel="stylesheet" href="../app/styles/css/variables.css" />
   
-  <!-- <link rel="stylesheet" href="../app/styles/css/index.page.css" /> -->
+  <link rel="stylesheet" href="../app/styles/css/select-pokemon.page.css" />
+  <link rel="stylesheet" href="../app/styles/scss/await-user.page.scss" />
 </head>
 
 <body>
  
-  <h1>Await</h1>
-  <!-- <script src="../app/pages/index/index.main.js"></script>
-  <script src="../app/pages/index/index.page.js"></script> -->
+  <main class="select-pokemon">
+    <header class="select-pokemon__header">
+      <div id="backButton" class="select-pokemon__header__back">
+        <img src="../app/assets/img/back-arrow.svg" alt="Ir para página anterior">
+      </div>
+
+      <h1 class="select-pokemon__header__title pkm-title">PokéLig4</h1>
+    </header>
+
+    <div class="pkm-await-panel">
+      <span class="pkm-await-img">
+        <img src="../app/assets/gif/pikachu-load.gif" alt="aguardando adversário"/>
+      </span>
+      <span class="pkm-centered-text">Aguardando adversário...</span>
+    </div>
+  </main>
+  
+  <script src="../app/pages/select-pokemon/select-pokemon.main.js"></script>
+  <script src="../app/pages/select-pokemon/select-pokemon.page.js"></script>
 </body>
 
 </html>

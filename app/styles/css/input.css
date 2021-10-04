@@ -1,0 +1,15 @@
+.pkm-input {
+  margin: 3rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  outline: none;
+  border: none;
+  box-shadow: 2px 4px 16px #e4e4e4;
+}
+
+.pkm-input:focus {
+  box-shadow: 2px 4px 18px #d6d6d6;
+  transition: all 0.25s ease-in-out;
+}
+
+/*# sourceMappingURL=input.css.map */
