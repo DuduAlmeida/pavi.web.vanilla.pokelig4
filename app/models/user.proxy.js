@@ -5,16 +5,16 @@ export class User {
     this.pokemon = null;
     this.isPlaying = false;
     this.ip = null;
-    // this.ip = await this._getUserIp();
+    // this._getUserIp().then(ip => {
+    //   this.ip = ip;
+    //   console.log(this.ip);
+    // });
     // this.pokemonName = null; //Pokemon is tracked by it name
   }
 
   get id() {
-    if (!this.name)
+    if (!this.name || !this.ip)
       return '';
-
-    if (!this.ip)
-      this.ip = await this._getUserIp();
 
     return `${this.name.toLocaleLowerCase()}#${this.ip}`;
   }
