@@ -60,3 +60,5 @@ das regras de negócio.
 ## UI
 
 ## Vídeos Explicativos
+
+- <a href="https://www.youtube.com/watch?v=PqwXqrwFPnE" target="_blank">Introdução</a>
