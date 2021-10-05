@@ -4,6 +4,7 @@ export class User {
     this.name = "";
     this.pokemon = null;
     this.isPlaying = false;
+    this.ip = null;
     // this.ip = await this._getUserIp();
     // this.pokemonName = null; //Pokemon is tracked by it name
   }
