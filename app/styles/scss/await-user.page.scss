@@ -1,15 +1,106 @@
+.display-root {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content-pattern {
+  max-width: calc(min(80vw, 60rem));
+  min-width: calc(min(80vw, 60rem));
+  width: calc(min(80vw, 60rem));
+}
+
+.panel-size {
+  max-height: calc(min(80vh, 60rem));
+  min-height: calc(min(80vh, 60rem));
+  height: calc(min(80vh, 60rem));
+
+  @extend .content-pattern;
+}
+
 .pkm-await-panel {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    height: 60rem;
-    width: 60rem;
-    background-color: white;
-    box-shadow: 2px 4px 16px #d6d6d6;
-    border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  border-radius: 0.5rem;
+  background-color: white;
+  box-shadow: var(--card-shadow);
+
+  @extend .panel-size;
 }
 
 .pkm-await-img {
-    margin: 10rem;
+  margin: 10rem;
+}
+
+.await-user {
+  width: 100vw;
+  max-width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--color-background);
+
+  @extend .display-root;
+
+  &__header {
+    margin: 1.5rem 0 3rem;
+    position: relative;
+
+    flex-direction: row;
+    justify-content: space-between;
+
+    @extend .display-root;
+    @extend .content-pattern;
+
+    &__back {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 3rem;
+      background-color: #fff;
+      box-shadow: var(--drop-shadow);
+
+      @extend .display-root;
+
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-left: -0.3rem;
+      }
+    }
+
+    &__title {
+      width: calc(98% - 2.5rem);
+
+      flex-direction: row;
+      justify-content: flex-end;
+      @extend .display-root;
+    }
+  }
+
+  &__list {
+    @extend .display-root;
+    @extend .content-pattern;
+
+    &__card {
+      height: 15rem !important;
+      min-height: 15rem !important;
+      max-height: 15rem !important;
+      margin: 0.5rem 0 0.5rem !important;
+
+      @extend .display-root;
+      @extend .content-pattern;
+
+      &:last-of-type {
+        margin: 0.5rem 0 3rem !important;
+      }
+
+      &__image {
+        max-width: 100%;
+        max-height: 15rem !important;
+      }
+    }
+  }
 }

@@ -10,9 +10,9 @@
 }
 
 .content-pattern {
-  max-width: min(80vw, 40rem);
-  min-width: min(80vw, 40rem);
-  width: min(80vw, 40rem);
+  max-width: calc(min(80vw, 40rem));
+  min-width: calc(min(80vw, 40rem));
+  width: calc(min(80vw, 40rem));
 }
 
 .select-pokemon {
