@@ -24,7 +24,7 @@ export const environment = {
         pokemon: '../app/assets/img/pokemon/',
     },
     socket: {
-        baseUrl: "https://front-br-challenges.web.app/api/v2/",
+        baseUrl: "https://localhost:4321",
     },
 }
 
