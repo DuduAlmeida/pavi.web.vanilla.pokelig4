@@ -353,7 +353,6 @@ h6 {
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: 2rem;
 }
 .pkm-card__image {
   width: 100%;

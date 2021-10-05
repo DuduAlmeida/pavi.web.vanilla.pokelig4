@@ -29,6 +29,9 @@
 .home__card__image {
   max-width: 100%;
 }
+.home__card__image img {
+  max-width: 100%;
+}
 .home__text {
   margin: 2rem 0 0;
 }
