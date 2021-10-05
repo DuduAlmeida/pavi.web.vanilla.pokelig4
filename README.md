@@ -59,6 +59,7 @@ das regras de negócio.
 
 ## UI
 
+- <a href="https://www.figma.com/file/3lGnnmRdDA0C9aCvnwBAnV/PA?node-id=0%3A1" target="_blank">Acessar Figma</a>
 ## Vídeos Explicativos
 
-- <a href="https://www.youtube.com/watch?v=PqwXqrwFPnE" target="_blank">Introdução</a>
+- <a href="https://www.youtube.com/watch?v=PqwXqrwFPnE" target="_blank">Assistir vídeo introdutório</a>
