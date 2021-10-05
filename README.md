@@ -23,7 +23,14 @@ npm run scss
 ```
 npm run socket:start
 ```
-
+- Inicializar todos necessários para desenvolver:
+```
+npm run dev
+```
+- Inicializar todos para a versão publicada:
+```
+npm run prod
+```
 ## Introdução
 
 O Liquid Galaxy é um projeto de código aberto fundado pelo Google. Criado em 2008 pelo funcionário do Google Jason Holt, o Liquid Galaxy começou como um visualizador panorâmico de vários monitores do Google Earth , mas evoluiu para se tornar uma ferramenta geral de visualização de dados para operações, marketing e pesquisa.
