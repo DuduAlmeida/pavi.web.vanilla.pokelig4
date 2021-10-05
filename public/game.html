@@ -4,14 +4,26 @@
 <head>
   <link rel="stylesheet" href="../app/styles/css/variables.css" />
   
-  <!-- <link rel="stylesheet" href="../app/styles/css/index.page.css" /> -->
+  <link rel="stylesheet" href="../app/styles/css/game.page.css" />
 </head>
 
 <body>
- 
-  <h1>Await</h1>
-  <!-- <script src="../app/pages/index/index.main.js"></script>
-  <script src="../app/pages/index/index.page.js"></script> -->
+  <main class="game">
+    <header class="game__header">
+      <div id="backButton" class="game__header__chat has-message">
+        <img src="../app/assets/img/open-chat.svg" alt="Fechar chat">
+      </div>
+
+      <h1 class="game__header__title pkm-title">Poké Lig4</h1>
+    </header>
+
+    <div id="pkm-list" class="game__list">
+
+    </div>
+  </main>
+
+  <script src="../app/pages/game/game.main.js"></script>
+  <script src="../app/pages/game/game.page.js"></script>
 </body>
 
 </html>
