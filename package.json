@@ -5,7 +5,8 @@
   "main": "./public/index.html",
   "author": "Eduardo Almeida",
   "scripts": {
-    "app:start": "parcel ./public/*.html --open",
+    "app:start:parcel": "parcel ./public/*.html --open",
+    "app:start": "node run-parcel.js",
     "socket:start": "nodemon ./socket/main.js",
     "scss": "sass --watch app/styles/scss:app/styles/css",
     "prod": "concurrently --kill-others \"npm run app:start\" \"npm run socket:start\"",
