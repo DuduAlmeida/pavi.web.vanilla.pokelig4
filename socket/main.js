@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 const socketio = require('socket.io');
 
+let listNamespaces = require('./data/poke.namespace');
+
 // #endregion Imports
 
 // #region Settings
@@ -12,24 +14,63 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/home.html');
 });
 
-const expressServer = app.listen(9000);
+const expressServer = app.listen(4321);
 const io = new socketio.Server(expressServer);
 
 // #endregion Settings
 
 // #region OnStart Application
 
-io.on('connection', (socket) => {
-	socket.emit('messageFromServer', { data: 'Welcome to the socketio server!' });
+listNamespaces.forEach((namespace) => {
+	io.of(namespace.endpoint).on('connection', (nsSocket) => {
 
-	socket.on('messageToServer', (dataFromClient) => {
-		console.log(dataFromClient);
-	});
+		// #region OnConnection
 
-	socket.on('newMessageToServer', (msg) => {
-		console.log(msg);
-		io.emit('messageToClients', { text: msg.text });
-	});
-})
+		console.log(`${nsSocket.id} has join ${namespace.endpoint}`);
+		nsSocket.emit('nsRoomLoad', namespace.rooms);
+
+		// #endregion OnConnection
+
+		// #region OnJoinRoom
+
+		nsSocket.on('joinRoom', (roomToJoin) => {
+			console.log(nsSocket.rooms);
+
+			const roomToLeave = Object.keys(nsSocket.rooms)[1];
+
+			nsSocket.leave(roomToLeave);
+			nsSocket.join(roomToJoin);
+
+			const nsRoom = namespace.rooms.find((room) => {
+				return room.name === roomToJoin;
+			})
+
+			nsSocket.emit('ChatHistoryCatchUp', nsRoom.chatHistory);
+			nsSocket.emit('GameHistoryCatchUp', nsRoom.gameHistory);
+		})
+
+		// #endregion OnJoinRoom
+
+		// #region OnNewMessageToServer
+
+		nsSocket.on('newMessageToServer', (msg) => {
+			const fullMsg = {
+				text: msg.text,
+				time: Date.now(),
+				userId: 'TODO: GET USER DATA',
+			}
+
+			const roomName = Object.keys(nsSocket.rooms)[1];
+			const nsRoom = namespace.rooms.find((room) => {
+				return room.name === roomName;
+			});
+
+			nsRoom.addMessage(fullMsg);
+			io.of(namespace.endpoint).to(roomName).emit('messageToClients', fullMsg);
+		})
+
+		// #endregion OnNewMessageToServer
+	})
+});
 
 // #endregion OnStart Application
