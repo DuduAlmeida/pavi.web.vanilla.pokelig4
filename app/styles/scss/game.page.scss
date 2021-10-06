@@ -42,8 +42,10 @@
     @extend .content-pattern;
 
     &__chat {
+      z-index: 5;
       width: 3rem;
       height: 3rem;
+      cursor: pointer;
       position: relative;
 
       border-radius: 3rem;
@@ -61,7 +63,6 @@
         &::before {
           content: "";
 
-          z-index: 5;
           left: 2rem;
           top: -0.25rem;
           width: 1rem;
@@ -100,12 +101,12 @@
     }
 
     &__chat {
-      height: 50%;
-      position: absolute;
+      // height: 50%;
+      // position: absolute;
 
-      @extend .display-root;
-      @extend .content-pattern;
-      justify-content: flex-start;
+      // @extend .display-root;
+      // @extend .content-pattern;
+      // justify-content: flex-start;
     }
   }
 
