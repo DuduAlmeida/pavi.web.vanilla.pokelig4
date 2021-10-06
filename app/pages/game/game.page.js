@@ -5,7 +5,6 @@ import 'regenerator-runtime/runtime';
 import { $ } from '../../utils/jquery.util';
 import { getFromStorage } from '../../utils/storage.util';
 import { environment } from '../../environments/environment';
-import { User } from '../../models/user.proxy';
 
 // #endregion Imports
 
@@ -14,7 +13,6 @@ export class GamePage {
 	// #region Constructor
 
 	constructor() {
-		new User();
 	}
 
 	// #endregion Constructor
