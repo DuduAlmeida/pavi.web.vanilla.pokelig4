@@ -1,6 +1,7 @@
 // #region Imports
 
 import 'regenerator-runtime/runtime';
+import { environment } from '../environments/environment';
 
 import { httpClient } from '../utils/httpClient';
 
@@ -21,14 +22,20 @@ export class User {
   }
 
   get id() {
-    if (!this.name || !this.ip)
+    if (!this.name)
       return '';
+
+    if (!this.ip)
+      return `${this.name.toLocaleLowerCase()}#noip`;
 
     return `${this.name.toLocaleLowerCase()}#${this.ip}`;
   }
 
   async _getUserIp() {
-    let data = await httpClient.get('https://jsonip.com/');
+
+    let data = !environment.isProduction
+      ? { ip: 'TESTE_HML' }
+      : await httpClient.get('https://jsonip.com/');
 
     return data.ip || null;
   }

@@ -8,6 +8,7 @@ import pokeImages from "../assets/img/pokemon/*.png";
 
 export const environment = {
     url: 'http://localhost:1234/',
+    isProduction: false,
 
     slugs: {
         game: 'game.html',
