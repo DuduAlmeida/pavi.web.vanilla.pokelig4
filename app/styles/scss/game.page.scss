@@ -15,6 +15,12 @@
   width: calc(min(80vw, 40rem));
 }
 
+.lig4-size {
+  max-width: calc(min(95vw, 60rem));
+  min-width: calc(min(95vw, 60rem));
+  width: calc(min(95vw, 60rem));
+}
+
 .game {
   width: 100vw;
   max-width: 100vw;
@@ -75,6 +81,31 @@
       flex-direction: row;
       justify-content: flex-end;
       @extend .display-root;
+    }
+  }
+
+  &__content {
+    padding: 0 0 4rem;
+    position: relative;
+    height: calc(99vh - (1.5rem + 3rem + 3rem));
+
+    @extend .display-root;
+    @extend .content-pattern;
+
+    &__lig4 {
+      height: 80%;
+
+      @extend .display-root;
+      @extend .lig4-size;
+    }
+
+    &__chat {
+      height: 50%;
+      position: absolute;
+
+      @extend .display-root;
+      @extend .content-pattern;
+      justify-content: flex-start;
     }
   }
 
