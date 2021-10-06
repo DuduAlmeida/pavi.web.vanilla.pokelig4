@@ -10,7 +10,7 @@
 <body>
   <main class="game">
     <header class="game__header">
-      <div id="backButton" class="game__header__chat has-message">
+      <div class="game__header__chat has-message close-modal" modal-id="game-chat">
         <img src="../app/assets/img/open-chat.svg" alt="Fechar chat">
       </div>
 
@@ -22,8 +22,12 @@
 
       </div>
 
-      <div id="game-chat" class="game__content__chat pkm-card">
-
+      <div id="game-chat" class="game__content__chat pkm-card pkm-modal">
+          <div class="pkm-modal__background close-modal"></div>
+          <div class="pkm-modal__content">
+            <span>Texto</span>
+            <button class="pkm-modal__close close-modal">X</button>
+          </div>
       </div>
     </div>
   </main>

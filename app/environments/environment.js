@@ -10,6 +10,9 @@ export const environment = {
     url: 'http://localhost:1234/',
     isProduction: false,
 
+    appKey: {
+        modalAttr: 'modal-id',
+    },
     slugs: {
         game: 'game.html',
         home: 'index.html',

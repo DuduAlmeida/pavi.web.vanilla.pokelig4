@@ -9,8 +9,5 @@ import { environment, LIST_POKEMONS_MOCKED } from '../../environments/environmen
 // #endregion Imports
 
 onReady(() => {
-  $('#backButton').addEventListener('click', (e) => {
-    e.preventDefault();
 
-  });
 })
