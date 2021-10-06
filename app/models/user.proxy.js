@@ -1,15 +1,23 @@
+// #region Imports
+
+import 'regenerator-runtime/runtime';
+
+import { httpClient } from '../utils/httpClient';
+
+// #endregion Imports
+
 export class User {
 
   constructor() {
     this.name = "";
+    this.ip = null;
     this.pokemon = null;
     this.isPlaying = false;
-    this.ip = null;
-    // this._getUserIp().then(ip => {
-    //   this.ip = ip;
-    //   console.log(this.ip);
-    // });
     // this.pokemonName = null; //Pokemon is tracked by it name
+
+    this._getUserIp().then(ip => {
+      this.ip = ip;
+    });
   }
 
   get id() {
@@ -20,10 +28,8 @@ export class User {
   }
 
   async _getUserIp() {
-    const data = await fetch('https://www.cloudflare.com/cdn-cgi/trace');
-    return data.trim().split('\n').reduce(function (obj, pair) {
-      pair = pair.split('=');
-      return obj[pair[0]] = pair[1], obj;
-    }, {});
+    let data = await httpClient.get('https://jsonip.com/');
+
+    return data.ip || null;
   }
 }
