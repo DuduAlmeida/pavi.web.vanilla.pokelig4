@@ -1,11 +1,11 @@
-.pkm-card {
+.pkm-card, .pkm-message {
   position: relative;
   width: 90%;
   padding: 1rem;
   height: 32.1rem;
   min-width: 90%;
   min-height: 32.1rem;
-  border-radius: 2rem;
+  border-radius: 1rem;
   background-color: #fff;
   box-shadow: var(--card-shadow);
   display: flex;
@@ -22,6 +22,18 @@
 .pkm-card__image img {
   max-width: 90%;
   max-height: 20rem;
+}
+
+.pkm-message {
+  width: 100%;
+  height: 2.5rem;
+  min-width: 100%;
+  min-height: 2.5rem;
+  margin: 0 0 1rem;
+  font-size: 1.3rem;
+  color: var(--color-background);
+  box-shadow: var(--small-shadow);
+  justify-content: center;
 }
 
 /*# sourceMappingURL=card.css.map */
