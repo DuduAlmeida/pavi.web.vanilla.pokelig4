@@ -24,12 +24,13 @@
   height: 100%;
 }
 .pkm-modal__content {
-  position: relative;
-  width: 90%;
   padding: 1rem;
-  height: 32.1rem;
-  min-width: 90%;
-  min-height: 32.1rem;
+  margin: 45vh 0 0 0;
+  position: relative;
+  width: 95vw;
+  height: 50vh;
+  min-width: 95vw;
+  min-height: 40vh;
   border-radius: 2rem;
   background-color: #fff;
   box-shadow: var(--card-shadow);
