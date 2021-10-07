@@ -63,3 +63,82 @@ das regras de negócio.
 ## Vídeos Explicativos
 
 - <a href="https://www.youtube.com/watch?v=PqwXqrwFPnE" target="_blank">Assistir vídeo introdutório</a>
+
+## Camadas do Projeto
+
+### App
+```
+Contém os scripts das telas da aplicação (Front).
+```
+- app__assets: 
+```
+Contém imports de imagens e gifs pra aplicação.
+```
+- app__components: 
+```
+Contém componentes que podem ser utilizados em diferentes telas da aplicação.
+```
+- app__environments: 
+```
+Contém as constantes da aplicação FrontEnd.
+```
+- app__models: 
+```
+Contém os modelos utilizados na aplicação FrontEnd.
+```
+- app__pages: 
+```
+Contém pastas de codebehinds de cada tela desenvolvida na aplicação.
+```
+- app__pages__*.events.js: 
+```
+A página que contém os listenners de eventos daquela página, podendo ter mais de um arquivo, para um diferente tipo de evento, por página da aplicação.
+```
+- app__pages__*.page.js: 
+```
+A página que contém a classe de tratamento de regras e requisições da página.
+```
+- app__pages__*.main.js: 
+```
+A página que contém os imports de eventos e da classe de tratamento de regras da página.
+```
+- app__services: 
+```
+Contém os serviços de chamada de alguma api/socket.
+```
+- app__styles: 
+```
+Contém os estilos da aplicação.
+```
+- app__styles_css: 
+```
+Contém os estilos finais da aplicação (Não editar pois são gerados).
+```
+- app__styles_scss: 
+```
+Contém os estilos para desenvolvimento da aplicação (Ao querer editar um estilo, deve ser feito nessa camada com o script de scss rodando).
+```
+- app__utils: 
+```
+Contém algumas funções que podem ser úteis para diferentes tipos de arquivos da pasta "app".
+```
+### Public
+```
+Contém a estrutura em HTML das páginas da aplicação.
+```
+### Socket
+```
+Contém as informações do socket do projeto.
+```
+- socket__classes: 
+```
+Contém algumas classes utilizadas na construção do socket.
+```
+- socket__data: 
+```
+Contém a regra de armazenamento do socket.
+```
+- socket__main.js: 
+```
+Contém as regras e eventos principais do socket da aplicação.
+```
