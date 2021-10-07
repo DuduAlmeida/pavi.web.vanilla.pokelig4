@@ -346,6 +346,22 @@ h6 {
   max-height: 20rem;
 }
 
+.pkm-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  color: var(--color-secondary);
+  box-shadow: var(--small-shadow);
+  transition: all 0.25s ease-in-out;
+}
+
+.pkm-input:focus {
+  box-shadow: var(--small-shadow-red);
+  transition: all 0.25s ease-in-out;
+}
+
 .pkm-modal {
   position: fixed;
   left: 0;

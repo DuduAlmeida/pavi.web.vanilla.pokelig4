@@ -1,14 +1,16 @@
 .pkm-input {
-    margin: 3rem;
-    padding: 0.5rem;
-    border-radius: 0.4rem;
-    outline: none;
+    width: 100%;
+
     border: none;
-    box-shadow: 2px 4px 16px #e4e4e4;
+    outline: none;
+    padding: 0.8rem;
+    border-radius: 1rem;
+    color: var(--color-secondary);
+    box-shadow: var(--small-shadow);
     transition: all 0.25s ease-in-out;
 }
 
 .pkm-input:focus {
-    box-shadow: 2px 4px 18px #d6d6d6;
+    box-shadow: var(--small-shadow-red);
     transition: all 0.25s ease-in-out;
 }
