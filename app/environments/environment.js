@@ -29,6 +29,13 @@ export const environment = {
     },
     socket: {
         baseUrl: "https://localhost:4321",
+
+        event: {
+            countUsers: 'countUsers',
+            sendMessage: 'newMessageToServer',
+            receiveMessage: 'messageToClients',
+            updateChatHistory: 'historyCatchUp',
+        }
     },
 }
 

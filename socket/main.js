@@ -39,6 +39,7 @@ listNamespaces.forEach((namespace) => {
 			const roomToLeave = Object.keys(nsSocket.rooms)[1];
 
 			nsSocket.leave(roomToLeave);
+			updateUsersLengthInRoom(namespace, roomToLeave);
 			nsSocket.join(roomToJoin);
 
 			const nsRoom = namespace.rooms.find((room) => {
@@ -47,7 +48,8 @@ listNamespaces.forEach((namespace) => {
 
 			nsSocket.emit('ChatHistoryCatchUp', nsRoom.chatHistory);
 			nsSocket.emit('GameHistoryCatchUp', nsRoom.gameHistory);
-		})
+			updateUsersLengthInRoom(namespace, roomToJoin);
+		});
 
 		// #endregion OnJoinRoom
 
@@ -57,7 +59,8 @@ listNamespaces.forEach((namespace) => {
 			const fullMsg = {
 				text: msg.text,
 				time: Date.now(),
-				userId: 'TODO: GET USER DATA',
+				user: msg.user,
+				color: msg.color,
 			}
 
 			const roomName = Object.keys(nsSocket.rooms)[1];
@@ -67,10 +70,18 @@ listNamespaces.forEach((namespace) => {
 
 			nsRoom.addMessage(fullMsg);
 			io.of(namespace.endpoint).to(roomName).emit('messageToClients', fullMsg);
-		})
+		});
 
 		// #endregion OnNewMessageToServer
 	})
 });
+
+function updateUsersLengthInRoom(namespace, roomToJoin) {
+	// Send back the number of users in this room to ALL sockets connected to this room
+	io.of(namespace.endpoint).in(roomToJoin).clients((error, clients) => {
+		// console.log(`There are ${clients.length} in this room`);
+		io.of(namespace.endpoint).in(roomToJoin).emit('countUsers', clients.length)
+	})
+}
 
 // #endregion OnStart Application
