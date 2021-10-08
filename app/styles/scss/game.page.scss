@@ -101,6 +101,10 @@
     }
 
     &__chat {
+      form {
+        width: 100%;
+      }
+
       .pkm-modal__content {
         &__title {
           width: 100%;

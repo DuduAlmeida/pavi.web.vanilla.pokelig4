@@ -16,7 +16,7 @@ export class GamePage {
 	constructor() {
 		this.user = null;
 		this.chatFormQuery = '#chat-form';
-		this.chatInputQuery = '#input-form';
+		this.chatInputQuery = '#chat-input';
 		this.chatContainerQuery = '#chat-container';
 		this.chatService = new ChatService();
 
@@ -30,10 +30,11 @@ export class GamePage {
 
 	// #region Public Methods
 
-	onSendMessage(e) {
+	onSendMessage = (e) => {
 		e.preventDefault();
 
-		const messageText = $(this.chatInputQuery).value;
+		const messageText = $('#chat-input').value;
+		$('#chat-input').value = '';
 
 		this.chatService.sendMessage(
 			messageText,
@@ -46,7 +47,7 @@ export class GamePage {
 
 	// #region Private Methods
 
-	_validateStorageData() {
+	_validateStorageData = () => {
 		this.user = getFromStorage(environment.storageKey.currentUser);
 
 		if (!this.user)

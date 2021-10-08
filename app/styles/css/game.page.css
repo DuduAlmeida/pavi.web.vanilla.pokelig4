@@ -73,6 +73,9 @@
 .game__content__lig4 {
   height: 80%;
 }
+.game__content__chat form {
+  width: 100%;
+}
 .game__content__chat .pkm-modal__content__title {
   width: 100%;
   text-align: center;
