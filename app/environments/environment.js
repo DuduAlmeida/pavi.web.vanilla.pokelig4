@@ -29,6 +29,7 @@ export const environment = {
     },
     socket: {
         baseUrl: "https://localhost:4321",
+        gameUrl: "https://localhost:4321/poke",
 
         event: {
             countUsers: 'countUsers',

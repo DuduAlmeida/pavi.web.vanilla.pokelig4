@@ -27,7 +27,7 @@
           <div class="pkm-modal__content">
             <h1 class="pkm-modal__content__title pkm-title">Chat</h1>
 
-            <div class="pkm-modal__content__list">
+            <div id="chat-container" class="pkm-modal__content__list">
               <span class="pkm-message" style="background-color: #FF6666">Texto Teste</span>
               <span class="pkm-message" style="background-color: #333333">Texto Teste</span>
               <span class="pkm-message" style="background-color: #FF6666">Texto Teste</span>
@@ -42,7 +42,9 @@
               <span class="pkm-message" style="background-color: #333333">Texto Teste</span>
             </div>
 
-            <input class="pkm-modal__content__input pkm-input" type="text" placeholder="Digite uma mensagem..."/>
+            <form id="chat-form">
+              <input id="chat-input" class="pkm-modal__content__input pkm-input" type="text" placeholder="Digite uma mensagem..."/>
+            </form>
           </div>
       </div>
     </div>

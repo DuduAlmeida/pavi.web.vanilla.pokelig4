@@ -12,7 +12,7 @@ export class ChatService {
   // #region Constructor
 
   constructor() {
-    this.socketNamespace = io(environment.socket.baseUrl);
+    this.socketNamespace = io(environment.socket.gameUrl);
   }
 
   // #endregion Constructor

@@ -3,6 +3,7 @@
 import 'regenerator-runtime/runtime';
 
 import { $ } from '../../utils/jquery.util';
+import { ChatService } from '../../services/chat.service';
 import { getFromStorage } from '../../utils/storage.util';
 import { environment } from '../../environments/environment';
 
@@ -13,23 +14,47 @@ export class GamePage {
 	// #region Constructor
 
 	constructor() {
+		this.user = null;
+		this.chatFormQuery = '#chat-form';
+		this.chatInputQuery = '#input-form';
+		this.chatContainerQuery = '#chat-container';
+		this.chatService = new ChatService();
+
+		this._validateStorageData();
+		this._listenChatForm(this.chatFormQuery);
+		this.chatService.listenChatHistory(this.chatContainerQuery);
+		this.chatService.onGetMessage(this.chatContainerQuery);
 	}
 
 	// #endregion Constructor
 
 	// #region Public Methods
 
+	onSendMessage(e) {
+		e.preventDefault();
 
+		const messageText = $(this.chatInputQuery).value;
+
+		this.chatService.sendMessage(
+			messageText,
+			this.user.ip || this.user.name,
+			!!this.user.canUsePrimary ? this.user.pokemon.color : this.user.pokemon.alternativeColor,
+		)
+	}
 
 	// #endregion Public Methods
 
 	// #region Private Methods
 
-	validateStorageData() {
-		const userStored = getFromStorage(environment.storageKey.currentUser);
+	_validateStorageData() {
+		this.user = getFromStorage(environment.storageKey.currentUser);
 
-		if (!userStored)
+		if (!this.user)
 			goToNextPage(environment.slugs.insertName);
+	}
+
+	_listenChatForm(chatFormQuery) {
+		$(chatFormQuery).addEventListener('submit', this.onSendMessage);
 	}
 
 	// #endregion Private Methods
