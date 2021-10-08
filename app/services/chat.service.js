@@ -12,7 +12,33 @@ export class ChatService {
   // #region Constructor
 
   constructor() {
-    this.socketNamespace = io(environment.socket.gameUrl);
+    const socket = io(environment.socket.baseUrl, {
+      withCredentials: true,
+      extraHeaders: {
+        'Access-Control-Allow-Origin': '*',
+      }
+    });
+
+    this.socketNamespace = io(environment.socket.gameUrl, {
+      withCredentials: true,
+      extraHeaders: {
+        'Access-Control-Allow-Origin': '*',
+      }
+    });
+    socket.on('nsList', (ns) => {
+      this.socketNamespace.close();
+      this.socketNamespace = io(environment.socket.gameUrl, {
+        withCredentials: true,
+        extraHeaders: {
+          'Access-Control-Allow-Origin': '*',
+        }
+      })
+
+      console.log('ns', this.socketNamespace);
+    });
+
+    console.log('socket', socket);
+    console.log('ns', this.socketNamespace);
   }
 
   // #endregion Constructor

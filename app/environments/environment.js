@@ -28,8 +28,8 @@ export const environment = {
         pokemon: '../app/assets/img/pokemon/',
     },
     socket: {
-        baseUrl: "https://localhost:4321",
-        gameUrl: "https://localhost:4321/poke",
+        baseUrl: "http://localhost:4321",
+        gameUrl: "http://localhost:4321/poke",
 
         event: {
             countUsers: 'countUsers',

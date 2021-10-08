@@ -1,6 +1,7 @@
 // #region Imports
 
 const express = require('express');
+const cors = require('cors')
 const app = express();
 const socketio = require('socket.io');
 
@@ -10,16 +11,35 @@ let listNamespaces = require('./data/poke.namespace');
 
 // #region Settings
 
+app.use(cors());
+
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/home.html');
 });
 
 const expressServer = app.listen(4321);
-const io = new socketio.Server(expressServer);
+const io = new socketio.Server(expressServer, {
+	cors: {
+		origin: "http://localhost:1234",
+		methods: ["GET", "POST", "PUT", "DELETE"],
+		allowedHeaders: ["Access-Control-Allow-Origin"],
+		credentials: true,
+	}
+});
 
 // #endregion Settings
 
 // #region OnStart Application
+
+io.on('connection', (socket) => {
+	const nsData = listNamespaces.map((ns) => {
+		return {
+			endpoint: ns.endpoint
+		}
+	});
+
+	socket.emit('nsList', nsData);
+})
 
 listNamespaces.forEach((namespace) => {
 	io.of(namespace.endpoint).on('connection', (nsSocket) => {
@@ -39,7 +59,7 @@ listNamespaces.forEach((namespace) => {
 			const roomToLeave = Object.keys(nsSocket.rooms)[1];
 
 			nsSocket.leave(roomToLeave);
-			updateUsersLengthInRoom(namespace, roomToLeave);
+			// updateUsersLengthInRoom(namespace, roomToLeave);
 			nsSocket.join(roomToJoin);
 
 			const nsRoom = namespace.rooms.find((room) => {
@@ -48,7 +68,7 @@ listNamespaces.forEach((namespace) => {
 
 			nsSocket.emit('ChatHistoryCatchUp', nsRoom.chatHistory);
 			nsSocket.emit('GameHistoryCatchUp', nsRoom.gameHistory);
-			updateUsersLengthInRoom(namespace, roomToJoin);
+			// updateUsersLengthInRoom(namespace, roomToJoin);
 		});
 
 		// #endregion OnJoinRoom
@@ -56,6 +76,7 @@ listNamespaces.forEach((namespace) => {
 		// #region OnNewMessageToServer
 
 		nsSocket.on('newMessageToServer', (msg) => {
+			console.log(msg);
 			const fullMsg = {
 				text: msg.text,
 				time: Date.now(),
@@ -76,12 +97,12 @@ listNamespaces.forEach((namespace) => {
 	})
 });
 
-function updateUsersLengthInRoom(namespace, roomToJoin) {
-	// Send back the number of users in this room to ALL sockets connected to this room
-	io.of(namespace.endpoint).in(roomToJoin).clients((error, clients) => {
-		// console.log(`There are ${clients.length} in this room`);
-		io.of(namespace.endpoint).in(roomToJoin).emit('countUsers', clients.length)
-	})
-}
+// function updateUsersLengthInRoom(namespace, roomToJoin) {
+// 	// Send back the number of users in this room to ALL sockets connected to this room
+// 	io.of(namespace.endpoint).in(roomToJoin).clients((error, clients) => {
+// 		// console.log(`There are ${clients.length} in this room`);
+// 		io.of(namespace.endpoint).in(roomToJoin).emit('countUsers', clients.length)
+// 	})
+// }
 
 // #endregion OnStart Application
