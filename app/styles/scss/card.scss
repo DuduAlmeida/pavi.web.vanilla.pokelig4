@@ -1,46 +1,67 @@
 .pkm-card {
-    position: relative;
+  position: relative;
 
-    width: 90%;
-    padding: 1rem;
-    height: 32.1rem;
-    min-width: 90%;
-    min-height: 32.1rem;
-    border-radius: 1rem;
-    background-color: #fff;
-    box-shadow: var(--card-shadow);
+  width: 90%;
+  padding: 1rem;
+  height: 32.1rem;
+  min-width: 90%;
+  min-height: 32.1rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: var(--card-shadow);
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__image {
+    width: 100%;
 
     display: flex;
     align-items: center;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 
-    &__image {
-        width: 100%;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        img {
-            max-width: 90%;
-            max-height: 20rem;
-        }
+    img {
+      max-width: 90%;
+      max-height: 20rem;
     }
+  }
 
 }
 
 .pkm-message {
+  width: 100%;
+  height: unset;
+  min-width: 100%;
+  min-height: 3.5rem;
+  position: relative;
+
+  margin: 0 0 1rem;
+  font-size: 1.3rem;
+  padding: 0.4rem 0.8rem;
+  color: var(--color-background);
+  box-shadow: var(--small-shadow);
+
+  @extend .pkm-card;
+  justify-content: center;
+
+  &__text {
     width: 100%;
-    height: 2.5rem;
-    min-width: 100%;
-    min-height: 2.5rem;
-
-    margin: 0 0 1rem;
     font-size: 1.3rem;
-    color: var(--color-background);
-    box-shadow: var(--small-shadow);
+    font-weight: 500;
 
-    @extend .pkm-card;
-    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+
+  &__time {
+    width: 100%;
+    font-size: 0.9rem;
+    font-weight: 300;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 }

@@ -10,9 +10,13 @@
 }
 
 .content-pattern {
-  max-width: calc(min(80vw, 40rem));
-  min-width: calc(min(80vw, 40rem));
-  width: calc(min(80vw, 40rem));
+  // max-width: calc(min(80vw, 40rem));
+  // min-width: calc(min(80vw, 40rem));
+  // width: calc(min(80vw, 40rem));
+
+  max-width: calc(min(95vw, 60rem));
+  min-width: calc(min(95vw, 60rem));
+  width: calc(min(95vw, 60rem));
 }
 
 .lig4-size {
