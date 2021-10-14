@@ -54,7 +54,6 @@ listNamespaces.forEach((namespace) => {
 		// #region OnJoinRoom
 
 		nsSocket.on('joinRoom', (roomToJoin) => {
-			console.log(nsSocket.rooms);
 
 			const roomToLeave = Object.keys(nsSocket.rooms)[1];
 
@@ -64,7 +63,7 @@ listNamespaces.forEach((namespace) => {
 
 			const nsRoom = namespace.rooms.find((room) => {
 				return room.name === roomToJoin;
-			})
+			});
 
 			nsSocket.emit('ChatHistoryCatchUp', nsRoom.chatHistory);
 			nsSocket.emit('GameHistoryCatchUp', nsRoom.gameHistory);
@@ -84,10 +83,9 @@ listNamespaces.forEach((namespace) => {
 				color: msg.color,
 			}
 
-			const roomName = Object.keys(nsSocket.rooms)[1];
-			const nsRoom = namespace.rooms.find((room) => {
-				return room.name === roomName;
-			});
+			const nsRoom = namespace.rooms[0];
+			const roomName = nsRoom.name;
+
 
 			nsRoom.addMessage(fullMsg);
 			io.of(namespace.endpoint).to(roomName).emit('messageToClients', fullMsg);
