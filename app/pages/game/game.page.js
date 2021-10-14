@@ -22,8 +22,6 @@ export class GamePage {
 
 		this._validateStorageData();
 		this._listenChatForm(this.chatFormQuery);
-		this.chatService.listenChatHistory(this.chatContainerQuery);
-		this.chatService.onGetMessage(this.chatContainerQuery);
 	}
 
 	// #endregion Constructor

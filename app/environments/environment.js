@@ -31,11 +31,15 @@ export const environment = {
         baseUrl: "http://localhost:4321",
         gameUrl: "http://localhost:4321/poke",
 
+        roomSlug: "lig4",
+
         event: {
             countUsers: 'countUsers',
             sendMessage: 'newMessageToServer',
             receiveMessage: 'messageToClients',
-            updateChatHistory: 'historyCatchUp',
+            updateChatHistory: 'ChatHistoryCatchUp',
+            joinRoom: 'joinRoom',
+            loadRoom: 'nsRoomLoad',
         }
     },
 }

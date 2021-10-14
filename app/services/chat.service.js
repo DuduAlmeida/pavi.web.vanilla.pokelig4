@@ -19,26 +19,22 @@ export class ChatService {
       }
     });
 
-    this.socketNamespace = io(environment.socket.gameUrl, {
-      withCredentials: true,
-      extraHeaders: {
-        'Access-Control-Allow-Origin': '*',
-      }
-    });
     socket.on('nsList', (ns) => {
-      this.socketNamespace.close();
+      if (!!this.socketNamespace)
+        this.socketNamespace.close();
       this.socketNamespace = io(environment.socket.gameUrl, {
         withCredentials: true,
         extraHeaders: {
           'Access-Control-Allow-Origin': '*',
         }
-      })
+      });
 
-      console.log('ns', this.socketNamespace);
+      this.socketNamespace.on(environment.socket.event.loadRoom, (listRooms) => {
+        this.socketNamespace.emit(environment.socket.event.joinRoom, environment.socket.roomSlug);
+        this.listenChatHistory('#chat-container');
+        this.onGetMessage('#chat-container');
+      });
     });
-
-    console.log('socket', socket);
-    console.log('ns', this.socketNamespace);
   }
 
   // #endregion Constructor
