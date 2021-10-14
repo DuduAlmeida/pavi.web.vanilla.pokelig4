@@ -75,7 +75,7 @@ export class ChatService {
   // #region Private Methods
 
   _buildMessageCardHTML(message) {
-    const convertedDate = new Date(message.time).toLocaleString();
+    const convertedDate = new Date(message.time).toLocaleString('pt-br').slice(0, -3);
 
     return `
     <div class="pkm-message" style="background-color:${message.color}">
