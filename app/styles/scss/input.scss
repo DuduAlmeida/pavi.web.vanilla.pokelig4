@@ -1,5 +1,5 @@
 .pkm-input {
-    width: 100%;
+    width: 30%;
 
     border: none;
     outline: none;
@@ -8,6 +8,7 @@
     color: var(--color-secondary);
     box-shadow: var(--small-shadow);
     transition: all 0.25s ease-in-out;
+    margin: 3px;
 }
 
 .pkm-input:focus {

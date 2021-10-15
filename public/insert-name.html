@@ -4,21 +4,30 @@
 <head>
   <link rel="stylesheet" href="../app/styles/css/variables.css" />
 
-  <link rel="stylesheet" href="../app/styles/css/index.page.css" />
+  <link rel="stylesheet" href="../app/styles/css/insert-name.page.css" />
   <link rel="stylesheet" href="../app/styles/scss/input.scss" />
 </head>
 
 <body>
-  <main class="home">
-    <h1 class="home__title pkm-title ">Identificação</h1>
+  <main class="insert-name">
+    <h1 class="insert-name__title pkm-title ">Identificação</h1>
     
-    <span class="pkm-centered-text">Digite o seu nome:</span>
-    <input class="pkm-input" type="text" name="Nome" size="40"/> 
+    <span class="insert-name-text">Digite o seu nome:</span>
+    <input id="insert-name-input" class="pkm-input" type="text" name="Nome" size="40" onkeyup="stoppedTyping()"/> 
     
-    <button id="btn-next-page" class="home__button pkm-btn">Continuar</button>
+    <button id="btn-next-page" class="insert-name__button pkm-btn" disabled>Continuar</button>
   </main>
   
-  <script src="../app/pages/index/index.page.js"></script>
+  <script src="../app/pages/insert-name/buttons.events.js"></script>
+  <script>
+    function stoppedTyping() {
+      if(document.getElementById('insert-name-input').value.length > 0){
+        document.getElementById("btn-next-page").disabled = false;
+      } else {
+        document.getElementById("btn-next-page").disabled = true;
+      }
+    }
+  </script>
 </body>
 
 </html>

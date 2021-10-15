@@ -397,7 +397,7 @@ h6 {
 }
 
 .pkm-input {
-  width: 100%;
+  width: 30%;
   border: none;
   outline: none;
   padding: 1.2rem 0.8rem;
@@ -405,6 +405,7 @@ h6 {
   color: var(--color-secondary);
   box-shadow: var(--small-shadow);
   transition: all 0.25s ease-in-out;
+  margin: 3px;
 }
 
 .pkm-input:focus {
