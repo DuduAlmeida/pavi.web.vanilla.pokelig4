@@ -1,4 +1,5 @@
 import 'regenerator-runtime/runtime';
+import {User} from '../../models/user.proxy';
 import { environment } from '../../environments/environment';
 import { $, $All } from '../../utils/jquery.util';
 import { onReady, goToNextPage } from '../../utils/page.util';
@@ -8,7 +9,7 @@ onReady(() => {
     $('#btn-next-page').addEventListener('click', (e) => {
         e.preventDefault();
 
-        let userStored = {};
+        let userStored = new User();
 
         if(getFromStorage(environment.storageKey.currentUser) !== null) {
             userStored = getFromStorage(environment.storageKey.currentUser);
