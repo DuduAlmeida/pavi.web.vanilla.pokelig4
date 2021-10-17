@@ -40,5 +40,11 @@
     margin: 1rem;
   }
 
+  .pkm-input{    
+    margin: 3px;
+    
+    @extend .content-pattern;
+  }
+
   /*# sourceMappingURL=index.page.css.map */
   

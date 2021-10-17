@@ -9,7 +9,7 @@
   justify-content: center;
 }
 
-.content-pattern, .insert-name__button, .insert-name__text, .insert-name__card, .insert-name__title {
+.content-pattern, .pkm-input, .insert-name__button, .insert-name__text, .insert-name__card, .insert-name__title {
   max-width: min(80vw, 40rem);
   min-width: min(80vw, 40rem);
   width: min(80vw, 40rem);
@@ -41,6 +41,10 @@
   text-align: center;
   color: var(--color-secondary);
   margin: 1rem;
+}
+
+.pkm-input {
+  margin: 3px;
 }
 
 /*# sourceMappingURL=index.page.css.map */
