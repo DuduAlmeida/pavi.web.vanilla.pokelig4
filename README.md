@@ -142,3 +142,6 @@ Contém a regra de armazenamento do socket.
 ```
 Contém as regras e eventos principais do socket da aplicação.
 ```
+### POC LIG4
+- Feita separadamente, em outro respositório, para adiantar as regras de negócio para implementação e abstração do jogo LIG4.
+- <a href="https://github.com/rafaelos-git/logica_lig4" target="_blank">Acessar repositório.</a>
