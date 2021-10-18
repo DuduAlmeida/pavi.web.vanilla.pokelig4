@@ -49,7 +49,7 @@ export const LIST_POKEMONS_MOCKED = {
         id: 1,
         name: 'Pikachu',
         color: '#f4c430',
-        alternativeColor: '#fffdd0',
+        alternativeColor: '#ffaa00',
         imageUrl: pokeImages.pikachu,
     },
     CHARMANDER: {
@@ -69,7 +69,7 @@ export const LIST_POKEMONS_MOCKED = {
     WARTORTLE: {
         id: 4,
         name: 'Wartortle',
-        color: '#87cefa',
+        color: '#0e4bef',
         alternativeColor: '#3db0f7',
         imageUrl: pokeImages.wartortle,
     },
