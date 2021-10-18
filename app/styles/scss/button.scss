@@ -1,42 +1,48 @@
 .pkm-btn {
-    cursor: pointer;
-    position: relative;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+
+  width: 100%;
+  border: none;
+  outline: none;
+  max-width: 100%;
+  margin: 2.2rem 0;
+  border-radius: 2.5rem;
+  padding: 0.4rem 1.5rem;
+  box-shadow: var(--button-shadow);
+
+  color: #fff;
+  background-color: var(--color-primary);
+
+  font-weight: 300;
+  font-size: 1.3rem;
+  line-height: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  >img {
+    margin-right: 1rem;
     transition: all 0.5s ease-in-out;
+  }
 
-    width: 100%;
-    border: none;
-    outline: none;
-    max-width: 100%;
-    margin: 2.2rem 0;
-    border-radius: 2.5rem;
-    padding: 0.4rem 1.5rem;
-    box-shadow: var(--button-shadow);
-
-    color: #fff;
-    background-color: var(--color-primary);
-
-    font-weight: 300;
-    font-size: 1.3rem;
-    line-height: 2rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  &:hover {
+    box-shadow: var(--button-shadow-hover);
+    // color: var(--color-primary) !important;
 
     >img {
-        margin-right: 1rem;
-        transition: all 0.5s ease-in-out;
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+      transition: all 0.5s ease-in-out;
     }
 
-    &:hover {
-        box-shadow: var(--button-shadow-hover);
-        // color: var(--color-primary) !important;
+    transition: all 0.5s ease-in-out;
+  }
 
-        >img {
-            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
-            transition: all 0.5s ease-in-out;
-        }
+  &:disabled {
+    opacity: 0.6;
 
-        transition: all 0.5s ease-in-out;
-    }
+    transition: all 0.5s ease-in-out;
+  }
 }
