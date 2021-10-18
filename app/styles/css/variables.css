@@ -356,6 +356,9 @@ h6 {
   flex-direction: column;
   justify-content: space-between;
 }
+.pkm-card.pokemon, .pokemon.pkm-message {
+  cursor: pointer;
+}
 .pkm-card__image {
   width: 100%;
   display: flex;

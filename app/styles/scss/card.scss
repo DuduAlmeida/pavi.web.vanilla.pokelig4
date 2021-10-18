@@ -15,6 +15,10 @@
   flex-direction: column;
   justify-content: space-between;
 
+  &.pokemon{
+    cursor: pointer;
+  }
+
   &__image {
     width: 100%;
 
