@@ -13,21 +13,12 @@
     <h1 class="insert-name__title pkm-title ">Identificação</h1>
     
     <span class="insert-name-text">Digite o seu nome:</span>
-    <input id="insert-name-input" class="pkm-input" type="text" name="Nome" onkeyup="stoppedTyping()"/> 
+    <input id="insert-name-input" class="pkm-input" type="text" name="Nome"/> 
     
     <button id="btn-next-page" class="insert-name__button pkm-btn" disabled>Continuar</button>
   </main>
   
   <script src="../app/pages/insert-name/insert-name.main.js"></script>
-  <script>
-    function stoppedTyping() {
-      if(document.getElementById('insert-name-input').value.length > 0){
-        document.getElementById("btn-next-page").disabled = false;
-      } else {
-        document.getElementById("btn-next-page").disabled = true;
-      }
-    }
-  </script>
 </body>
 
 </html>
