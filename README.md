@@ -145,3 +145,12 @@ Contém as regras e eventos principais do socket da aplicação.
 ### POC LIG4
 - Feita separadamente, em outro respositório, para adiantar as regras de negócio para implementação e abstração do jogo LIG4.
 - <a href="https://github.com/rafaelos-git/logica_lig4" target="_blank">Acessar repositório.</a>
+
+## TODO:
+- Adicionar diferenciação para quando usuário selecionar o mesmo pokemon
+- Finalizar abstração das regras do lig4 para JavaScript.
+- Adicionar regra de negócio para o lig4 (slack).
+- Adicionar regra de negócio para o lig4 (front-end).
+- Construir componente visual para o LIG4.
+- Adicionar regra de negócio para ir para a página de jogos, e assim, reconhecer se tem jogadores suficientes para começar.
+- ATENÇÃO: Os dados do usuário são salvos no cache, ao abrir diferentes abas no mesmo desktop, abra com cache diferente (Guias anônimas diferentes).
