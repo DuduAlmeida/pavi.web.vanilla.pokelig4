@@ -148,6 +148,7 @@ Contém as regras e eventos principais do socket da aplicação.
 
 ## TODO:
 - Adicionar diferenciação para quando usuário selecionar o mesmo pokemon
+- Tratamento para mais de um usuário entrando na aplicação.
 - Finalizar abstração das regras do lig4 para JavaScript.
 - Adicionar regra de negócio para o lig4 (slack).
 - Adicionar regra de negócio para o lig4 (front-end).
