@@ -11,7 +11,7 @@
 ```
 npm i
 ```
-- Inicializar Client:
+- Inicializar Client <a href="http://localhost:1234/" target="_blank">(http://localhost:1234/)</a>:
 ```
 npm run app:start
 ```
@@ -19,7 +19,7 @@ npm run app:start
 ```
 npm run scss
 ```
-- Inicializar socket:
+- Inicializar socket <a href="http://localhost:4321/" target="_blank">(http://localhost:4321/)</a>:
 ```
 npm run socket:start
 ```
