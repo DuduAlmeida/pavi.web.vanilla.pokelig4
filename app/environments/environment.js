@@ -34,13 +34,15 @@ export const environment = {
         roomSlug: "lig4",
 
         event: {
+            joinRoom: 'joinRoom',
+            loadRoom: 'nsRoomLoad',
             countUsers: 'countUsers',
+            getListPlayers: 'listPlayers',
+            countUsersInGame: 'countUsers',
             sendMessage: 'newMessageToServer',
             receiveMessage: 'messageToClients',
             updateChatHistory: 'ChatHistoryCatchUp',
-            joinRoom: 'joinRoom',
-            loadRoom: 'nsRoomLoad',
-            countUsersInGame: 'countUsers',
+            addPlayerIntoServer: 'addPlayerIntoServer',
         }
     },
 }

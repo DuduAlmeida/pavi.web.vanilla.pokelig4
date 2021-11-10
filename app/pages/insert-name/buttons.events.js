@@ -12,10 +12,11 @@ onReady(() => {
         let userStored = new User();
 
         if(getFromStorage(environment.storageKey.currentUser) !== null) {
-            userStored = getFromStorage(environment.storageKey.currentUser);
+            userStored.fromAnotherObject(getFromStorage(environment.storageKey.currentUser));
         }
 
         userStored.name = document.getElementById('insert-name-input').value;
+        userStored.updateId();
         setIntoStorage(environment.storageKey.currentUser, userStored);
 
         goToNextPage(environment.slugs.selectPokemon);

@@ -11,6 +11,7 @@ export class User {
 
   constructor() {
     this.name = "";
+    this.id = '';
     this.ip = null;
     this.pokemon = null;
     this.isPlaying = false;
@@ -19,17 +20,33 @@ export class User {
 
     this._getUserIp().then(ip => {
       this.ip = ip;
+      this.updateId();
     });
   }
 
-  get id() {
-    if (!this.name)
-      return '';
+  updateId() {
+    if (!this.name) {
+      this.id = '';
+      return;
+    }
 
-    if (!this.ip)
-      return `${this.name.toLocaleLowerCase()}#noip`;
+    if (!this.ip) {
+      this.id = `${this.name.toLocaleLowerCase()}#noip`;
+      return;
+    }
 
-    return `${this.name.toLocaleLowerCase()}#${this.ip}`;
+    this.id = `${this.name.toLocaleLowerCase()}#${this.ip}`;
+  }
+
+  fromAnotherObject(obj) {
+    if(!!obj){
+      this.ip = obj.ip || this.ip;
+      this.id = obj.id || this.id;
+      this.name = obj.name || this.name;
+      this.pokemon = obj.pokemon || this.pokemon;
+      this.isPlaying = obj.isPlaying || this.isPlaying;
+      this.canUsePrimary = obj.canUsePrimary || this.canUsePrimary;
+    }
   }
 
   async _getUserIp() {
@@ -39,5 +56,5 @@ export class User {
       : await httpClient.get('https://jsonip.com/');
 
     return data.ip || null;
-  }
+  }  
 }

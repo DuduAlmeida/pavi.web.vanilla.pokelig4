@@ -3,6 +3,8 @@
 import 'regenerator-runtime/runtime';
 
 import { $ } from '../../utils/jquery.util';
+import { ChatService } from '../../services/chat.service';
+import { GameService } from '../../services/game.service';
 import { getFromStorage } from '../../utils/storage.util';
 import { environment } from '../../environments/environment';
 
@@ -13,6 +15,8 @@ export class AwaitUserPage {
 	// #region Constructor
 
 	constructor() {
+		this.gameService = new GameService(true);
+		this.chatService = new ChatService(false);
 		this.validateStorageData();
 	}
 

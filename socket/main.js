@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors')
 const app = express();
 const socketio = require('socket.io');
+const User = require('./classes/User');
 
 let listNamespaces = require('./data/poke.namespace');
 
@@ -92,13 +93,33 @@ listNamespaces.forEach((namespace) => {
 		});
 
 		// #endregion OnNewMessageToServer
+
+		// #region OnNewMessageToServer
+
+		nsSocket.on('addPlayerIntoServer', (player) => {
+			let user = new User();
+			user.updateFromInterface(player);
+
+			const nsRoom = namespace.rooms[0];
+			const roomName = nsRoom.name;
+
+			if (!nsRoom.findUser(user)) {
+				nsRoom.addUser(user);
+			}else {
+				console.log('Achou user', user);
+			}
+
+			io.of(namespace.endpoint).to(roomName).emit('listPlayers', nsRoom.users);
+		});
+
+		// #endregion OnNewMessageToServer
 	})
 });
 
 function updateUsersLengthInRoom(namespace, roomToJoin) {
 	let clients = io.of(namespace.endpoint).sockets;
 	clients = Array.from(clients);
-	
+
 	io.of(namespace.endpoint).in(roomToJoin).emit('countUsers', Object.keys(clients).length)
 }
 
