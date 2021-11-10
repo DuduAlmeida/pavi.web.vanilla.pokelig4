@@ -4,6 +4,7 @@ import 'regenerator-runtime/runtime';
 
 import { $ } from '../../utils/jquery.util';
 import { ChatService } from '../../services/chat.service';
+import { GameService } from '../../services/game.service';
 import { getFromStorage } from '../../utils/storage.util';
 import { environment } from '../../environments/environment';
 
@@ -19,6 +20,7 @@ export class GamePage {
 		this.chatInputQuery = '#chat-input';
 		this.chatContainerQuery = '#chat-container';
 		this.chatService = new ChatService();
+		this.gameService = new GameService();
 
 		this._validateStorageData();
 		this._listenChatForm(this.chatFormQuery);

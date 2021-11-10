@@ -11,7 +11,7 @@ export class ChatService {
 
   // #region Constructor
 
-  constructor() {
+  constructor(hasToCallMethods = true) {
     const socket = io(environment.socket.baseUrl, {
       withCredentials: true,
       extraHeaders: {
@@ -31,8 +31,11 @@ export class ChatService {
 
       this.socketNamespace.on(environment.socket.event.loadRoom, (listRooms) => {
         this.socketNamespace.emit(environment.socket.event.joinRoom, environment.socket.roomSlug);
-        this.listenChatHistory('#chat-container');
-        this.onGetMessage('#chat-container');
+
+        if (!!hasToCallMethods) {
+          this.listenChatHistory('#chat-container');
+          this.onGetMessage('#chat-container');
+        }
       });
     });
   }

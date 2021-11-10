@@ -40,6 +40,7 @@ export const environment = {
             updateChatHistory: 'ChatHistoryCatchUp',
             joinRoom: 'joinRoom',
             loadRoom: 'nsRoomLoad',
+            countUsersInGame: 'countUsers',
         }
     },
 }

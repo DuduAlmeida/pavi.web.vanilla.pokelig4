@@ -58,7 +58,7 @@ listNamespaces.forEach((namespace) => {
 			const roomToLeave = Object.keys(nsSocket.rooms)[1];
 
 			nsSocket.leave(roomToLeave);
-			// updateUsersLengthInRoom(namespace, roomToLeave);
+			updateUsersLengthInRoom(namespace, roomToLeave);
 			nsSocket.join(roomToJoin);
 
 			const nsRoom = namespace.rooms.find((room) => {
@@ -67,7 +67,7 @@ listNamespaces.forEach((namespace) => {
 
 			nsSocket.emit('ChatHistoryCatchUp', nsRoom.chatHistory);
 			nsSocket.emit('GameHistoryCatchUp', nsRoom.gameHistory);
-			// updateUsersLengthInRoom(namespace, roomToJoin);
+			updateUsersLengthInRoom(namespace, roomToJoin);
 		});
 
 		// #endregion OnJoinRoom
@@ -95,12 +95,11 @@ listNamespaces.forEach((namespace) => {
 	})
 });
 
-// function updateUsersLengthInRoom(namespace, roomToJoin) {
-// 	// Send back the number of users in this room to ALL sockets connected to this room
-// 	io.of(namespace.endpoint).in(roomToJoin).clients((error, clients) => {
-// 		// console.log(`There are ${clients.length} in this room`);
-// 		io.of(namespace.endpoint).in(roomToJoin).emit('countUsers', clients.length)
-// 	})
-// }
+function updateUsersLengthInRoom(namespace, roomToJoin) {
+	let clients = io.of(namespace.endpoint).sockets;
+	clients = Array.from(clients);
+	
+	io.of(namespace.endpoint).in(roomToJoin).emit('countUsers', Object.keys(clients).length)
+}
 
 // #endregion OnStart Application
