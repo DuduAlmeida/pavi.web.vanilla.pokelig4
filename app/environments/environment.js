@@ -43,6 +43,7 @@ export const environment = {
             receiveMessage: 'messageToClients',
             updateChatHistory: 'ChatHistoryCatchUp',
             addPlayerIntoServer: 'addPlayerIntoServer',
+            removePlayerInServer: 'removePlayerInServer',
         }
     },
 }

@@ -3,6 +3,7 @@
 import 'regenerator-runtime/runtime';
 import { environment } from '../environments/environment';
 
+import { isValid } from '../utils/validate.util';
 import { httpClient } from '../utils/httpClient';
 
 // #endregion Imports
@@ -30,22 +31,22 @@ export class User {
       return;
     }
 
-    if (!this.ip) {
-      this.id = `${this.name.toLocaleLowerCase()}#noip`;
-      return;
-    }
+    // if (!this.ip) {
+    this.id = `${this.name.toLocaleLowerCase()}#noip`;
+    // return;
+    // }
 
-    this.id = `${this.name.toLocaleLowerCase()}#${this.ip}`;
+    // this.id = `${this.name.toLocaleLowerCase()}#${this.ip}`;
   }
 
   fromAnotherObject(obj) {
-    if(!!obj){
-      this.ip = obj.ip || this.ip;
-      this.id = obj.id || this.id;
-      this.name = obj.name || this.name;
-      this.pokemon = obj.pokemon || this.pokemon;
-      this.isPlaying = obj.isPlaying || this.isPlaying;
-      this.canUsePrimary = obj.canUsePrimary || this.canUsePrimary;
+    if (!!obj) {
+      this.ip = isValid(obj.ip) ? obj.ip : this.ip;
+      this.id = isValid(obj.id) ? obj.id : this.id;
+      this.name = isValid(obj.name) ? obj.name : this.name;
+      this.pokemon = isValid(obj.pokemon) ? obj.pokemon : this.pokemon;
+      this.isPlaying = isValid(obj.isPlaying) ? obj.isPlaying : this.isPlaying;
+      this.canUsePrimary = isValid(obj.canUsePrimary) ? obj.canUsePrimary : this.canUsePrimary;
     }
   }
 
@@ -56,5 +57,5 @@ export class User {
       : await httpClient.get('https://jsonip.com/');
 
     return data.ip || null;
-  }  
+  }
 }

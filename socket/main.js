@@ -49,6 +49,7 @@ listNamespaces.forEach((namespace) => {
 
 		console.log(`${nsSocket.id} has join ${namespace.endpoint}`);
 		nsSocket.emit('nsRoomLoad', namespace.rooms);
+		io.of(namespace.endpoint).to(namespace.rooms[0].name).emit('listPlayers', namespace.rooms[0].users);
 
 		// #endregion OnConnection
 
@@ -69,6 +70,7 @@ listNamespaces.forEach((namespace) => {
 			nsSocket.emit('ChatHistoryCatchUp', nsRoom.chatHistory);
 			nsSocket.emit('GameHistoryCatchUp', nsRoom.gameHistory);
 			updateUsersLengthInRoom(namespace, roomToJoin);
+			io.of(namespace.endpoint).to(nsRoom.name).emit('listPlayers', nsRoom.users);
 		});
 
 		// #endregion OnJoinRoom
@@ -105,10 +107,22 @@ listNamespaces.forEach((namespace) => {
 
 			if (!nsRoom.findUser(user)) {
 				nsRoom.addUser(user);
-			}else {
-				console.log('Achou user', user);
 			}
 
+			io.of(namespace.endpoint).to(roomName).emit('listPlayers', nsRoom.users);
+		});
+
+		nsSocket.on('removePlayerInServer', (player) => {
+			let user = new User();
+			user.updateFromInterface(player);
+
+			const nsRoom = namespace.rooms[0];
+			const roomName = nsRoom.name;
+
+			if (!!nsRoom.findUser(user)) {
+				nsRoom.removeUser(user);
+			}
+			console.log(nsRoom.users);
 			io.of(namespace.endpoint).to(roomName).emit('listPlayers', nsRoom.users);
 		});
 

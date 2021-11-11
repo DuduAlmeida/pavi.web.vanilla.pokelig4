@@ -3,9 +3,10 @@
 import { io } from "socket.io-client";
 
 import { $ } from '../utils/jquery.util';
+import { User } from '../models/user.proxy';
 import { goToNextPage } from '../utils/page.util';
-import { getFromStorage } from '../utils/storage.util';
 import { environment } from "../environments/environment";
+import { getFromStorage, setIntoStorage } from '../utils/storage.util';
 
 // #endregion Imports
 
@@ -42,6 +43,7 @@ export class GameService {
 
         this.getUsersInGame();
         this.addUserInGame();
+        this.closeGame();
       });
     });
   }
@@ -52,14 +54,15 @@ export class GameService {
 
   getUsersInGame() {
     this.socketNamespace.on(environment.socket.event.getListPlayers, (listPlayers) => {
+      this._updateUserInStorage(listPlayers);
 
+      // console.log(listPlayers, this.user);
       if (!!this.hasToGoToGameWhenValid && !!this.user && !!listPlayers) {
 
         if (listPlayers.length >= 2 && this._hasUserInList(listPlayers)) {
           goToNextPage(environment.slugs.game);
         }
       }
-
     });
   }
 
@@ -67,6 +70,14 @@ export class GameService {
     if (!!this.hasToGoToGameWhenValid && !!this.user) {
       this.socketNamespace.emit(environment.socket.event.addPlayerIntoServer, this.user);
     }
+  }
+
+  closeGame() {
+    window.addEventListener("onunload", function (e) {
+      if (!!this.user) {
+        this.socketNamespace.emit(environment.socket.event.removePlayerInServer, this.user);
+      }
+    });
   }
 
   // #endregion Public Methods
@@ -80,8 +91,24 @@ export class GameService {
       goToNextPage(environment.slugs.insertName);
   }
 
+  _findUserInList(listUsers) {
+    return listUsers.find(player => player.id == this.user.id);
+  }
+
   _hasUserInList(listUsers) {
-    return !!listUsers.find(player => player.id == this.user.id)
+    return !!this._findUserInList(listUsers);
+  }
+
+  _updateUserInStorage(listUsers) {
+    let userStored = new User();
+    const userSocket = this._findUserInList(listUsers);
+
+    if (!userSocket) return;
+
+    userStored.fromAnotherObject(userSocket);
+    console.log(userStored, userSocket);
+    setIntoStorage(environment.storageKey.currentUser, userStored);
+    this.user = userStored;
   }
 
   // #endregion Private Methods

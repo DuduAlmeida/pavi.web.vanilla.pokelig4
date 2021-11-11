@@ -11,6 +11,7 @@ class Room {
 
   addUser(user) {
     const hasSamePokemon = !!this.findUserWithSamePokemon(user);
+    console.log('User: ', user.name, hasSamePokemon);
     user.canUsePrimary = !hasSamePokemon;
     this.users.push(user);
   }
@@ -47,7 +48,7 @@ class Room {
   }
 
   findUserWithSamePokemon(userFinded) {
-    return this.users.find(user => user.pokemon === userFinded.pokemon);
+    return this.users.find(user => user.pokemon.id === userFinded.pokemon.id);
   }
 
   findUserIndex(userFinded) {
