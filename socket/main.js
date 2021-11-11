@@ -98,7 +98,7 @@ listNamespaces.forEach((namespace) => {
 
 		// #endregion OnNewMessageToServer
 
-		// #region OnNewMessageToServer
+		// #region Add Or Remove Player
 
 		nsSocket.on('addPlayerIntoServer', (player) => {
 			let user = new User();
@@ -124,11 +124,12 @@ listNamespaces.forEach((namespace) => {
 			if (!!nsRoom.findUser(user)) {
 				nsRoom.removeUser(user);
 			}
-			console.log(nsRoom.users);
+			
+			console.log('Chamou pra remover');
 			io.of(namespace.endpoint).to(roomName).emit('listPlayers', nsRoom.users);
 		});
 
-		// #endregion OnNewMessageToServer
+		// #endregion Add Or Remove Player
 	})
 });
 

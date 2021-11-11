@@ -73,11 +73,12 @@ export class GameService {
   }
 
   closeGame() {
-    window.addEventListener("onunload", function (e) {
+    window.onunload = function (e) {
+      console.log('Chamou');
       if (!!this.user) {
         this.socketNamespace.emit(environment.socket.event.removePlayerInServer, this.user);
       }
-    });
+    };
   }
 
   // #endregion Public Methods
