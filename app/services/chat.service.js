@@ -65,10 +65,12 @@ export class ChatService {
     });
   }
 
-  sendMessage(messageText, userId, color) {
+  sendMessage(messageText, userId, color, userName, pokemonId) {
     this.socketNamespace.emit(environment.socket.event.sendMessage, {
-      user: userId,
+      userName,
+      pokemonId,
       color: color,
+      user: userId,
       text: messageText,
     });
   }

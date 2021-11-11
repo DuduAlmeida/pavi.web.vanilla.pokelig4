@@ -81,9 +81,11 @@ listNamespaces.forEach((namespace) => {
 			console.log(msg);
 			const fullMsg = {
 				text: msg.text,
-				time: Date.now(),
 				user: msg.user,
+				time: Date.now(),
 				color: msg.color,
+				userName: msg.userName,
+				pokemonId: msg.pokemonId,
 			}
 
 			const nsRoom = namespace.rooms[0];

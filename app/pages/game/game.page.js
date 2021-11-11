@@ -38,8 +38,10 @@ export class GamePage {
 
 		this.chatService.sendMessage(
 			messageText,
-			this.user.ip || this.user.name,
+			this.user.id,
 			!!this.user.canUsePrimary ? this.user.pokemon.color : this.user.pokemon.alternativeColor,
+			this.user.name,
+			this.user.pokemon.id,
 		)
 	}
 
