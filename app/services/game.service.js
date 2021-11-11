@@ -106,7 +106,6 @@ export class GameService {
     if (!userSocket) return;
 
     userStored.fromAnotherObject(userSocket);
-    console.log(userStored, userSocket);
     setIntoStorage(environment.storageKey.currentUser, userStored);
     this.user = userStored;
   }
