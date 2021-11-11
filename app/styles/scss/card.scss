@@ -15,7 +15,7 @@
   flex-direction: column;
   justify-content: space-between;
 
-  &.pokemon{
+  &.pokemon {
     cursor: pointer;
   }
 
@@ -31,7 +31,6 @@
       max-height: 20rem;
     }
   }
-
 }
 
 .pkm-message {
@@ -49,6 +48,41 @@
 
   @extend .pkm-card;
   justify-content: center;
+
+  &__container {
+    width: 100%;
+    min-width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    &__left {
+      width: 8rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img{
+        max-width: 100%;
+        height: 6rem;
+      }
+    }
+    &__right {
+      width: calc(98% - 8rem);
+      margin-left: 2%;
+    }
+  }
+
+  &__user {
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+  }
 
   &__text {
     width: 100%;

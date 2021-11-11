@@ -3,7 +3,7 @@
 import { io } from "socket.io-client";
 
 import { $ } from '../utils/jquery.util';
-import { environment } from "../environments/environment";
+import { environment, LIST_POKEMONS_MOCKED } from "../environments/environment";
 
 // #endregion Imports
 
@@ -84,8 +84,16 @@ export class ChatService {
 
     return `
     <div class="pkm-message" style="background-color:${message.color}">
-      <span class="pkm-message__text">${message.text}</span>
-      <span class="pkm-message__time">${convertedDate}</span>
+      <div class="pkm-message__container">
+        <div class="pkm-message__container__left">
+          <img class="pkm-message__pokemon" src="${LIST_POKEMONS_MOCKED[message.pokemonId].imageUrl}"/>
+        </div>
+        <div class="pkm-message__container__right">
+          <span class="pkm-message__user">${message.userName}</span>
+          <span class="pkm-message__text">${message.text}</span>
+          <span class="pkm-message__time">${convertedDate}</span>
+        </div>
+      </div>
     </div>`;
   }
 

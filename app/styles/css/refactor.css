@@ -366,6 +366,34 @@ h6 {
   box-shadow: var(--small-shadow);
   justify-content: center;
 }
+.pkm-message__container {
+  width: 100%;
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.pkm-message__container__left {
+  width: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pkm-message__container__left img {
+  max-width: 100%;
+  height: 6rem;
+}
+.pkm-message__container__right {
+  width: calc(98% - 8rem);
+  margin-left: 2%;
+}
+.pkm-message__user {
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
 .pkm-message__text {
   width: 100%;
   font-size: 1.3rem;

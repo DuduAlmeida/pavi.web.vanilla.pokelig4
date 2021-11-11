@@ -41,7 +41,7 @@ export class GamePage {
 			this.user.id,
 			!!this.user.canUsePrimary ? this.user.pokemon.color : this.user.pokemon.alternativeColor,
 			this.user.name,
-			this.user.pokemon.id,
+			this.user.pokemon.name.toLocaleUpperCase(),
 		)
 	}
 
