@@ -141,3 +141,8 @@ function updateUsersLengthInRoom(namespace, roomToJoin) {
 }
 
 // #endregion OnStart Application
+
+// #region Verify Winner
+nsSocket.on('verifyWinner', (board, player1, player2) => {
+
+})
