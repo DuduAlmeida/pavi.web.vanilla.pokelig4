@@ -144,7 +144,25 @@ function updateUsersLengthInRoom(namespace, roomToJoin) {
 
 // #region Verify Winner
 nsSocket.on('verifyWinner', (board, player1, player2) => {
+	let winner = ''
+	var linePlayer1 = []
+    var columnPlayer1 = []
+    var linePlayer2 = []
+    var columnPlayer2 = []
 
+	// #region Play Mapping
+	board.map((lines, lineIndex) => {
+		lines.map((columns, columnIndex) => {
+			if (columns === player1) {
+				linePlayer1.push(lineIndex)
+				columnPlayer1.push(columnIndex)
+			} else if (columns === player2) {
+				linePlayer2.push(lineIndex)
+				columnPlayer2.push(columnIndex)
+			}
+		})
+	})
+	// #endregion Play Mapping
 })
 
 function verify(mainAxis, auxAxis, direction) {
