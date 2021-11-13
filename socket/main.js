@@ -146,3 +146,7 @@ function updateUsersLengthInRoom(namespace, roomToJoin) {
 nsSocket.on('verifyWinner', (board, player1, player2) => {
 
 })
+
+function verify(mainAxis, auxAxis, direction) {
+	
+}
