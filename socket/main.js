@@ -212,6 +212,22 @@ function verify(mainAxis, auxAxis, direction) {
 				return qt
 			}
 		}
+
+		//right diagonal
+		else if (direction === 'rd') {
+			last = i
+			for(var j = 0; j < mainAxis.length; j++) {
+				if(qt < 4) {
+					if ((mainAxis[j] == mainAxis[last] + 1) && (auxAxis[j] == auxAxis[last] - 1)){
+					last = j
+					qt++
+					}
+				} else {
+					return qt
+				}
+			}
+			qt = 1
+		}
     }
     return qt
 }
