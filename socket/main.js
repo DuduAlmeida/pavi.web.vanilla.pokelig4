@@ -179,6 +179,13 @@ nsSocket.on('verifyWinner', (board, player1, player2) => {
 	//left diagonal
     const leftDiagonalPlayer1 = verify(linePlayer1, columnPlayer1, 'ld')
     const leftDiagonalPlayer2 = verify(linePlayer2, columnPlayer2, 'ld')
+
+	//check if there was a winner
+	if (horizontalPlayer1 >= 4 || verticalPlayer1 >= 4 || rightDiagonalPlayer1 >= 4 || leftDiagonalPlayer1 >= 4) {
+		winner = player1
+	} else if (horizontalPlayer2 >= 4 || verticalPlayer2 >= 4 || rightDiagonalPlayer2 >= 4 || leftDiagonalPlayer2 >= 4) {
+		winner = player2
+	}
 })
 
 function verify(mainAxis, auxAxis, direction) {
