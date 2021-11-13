@@ -228,6 +228,26 @@ function verify(mainAxis, auxAxis, direction) {
 			}
 			qt = 1
 		}
+
+		//left diagonal
+		else if (direction === 'ld') {
+			last = i
+			for(var j = 0; j < mainAxis.length; j++) {
+				if(qt < 4) {
+					if ((mainAxis[j] == mainAxis[last] + 1) && (auxAxis[j] == auxAxis[last] + 1)){
+					last = j
+					qt++
+					}
+				} else {
+					return qt
+				}
+			}
+			if (qt < 4) {
+			  	qt = 1
+			} else {
+			  	return qt
+			}
+		}
     }
     return qt
 }
