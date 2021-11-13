@@ -189,5 +189,31 @@ nsSocket.on('verifyWinner', (board, player1, player2) => {
 })
 
 function verify(mainAxis, auxAxis, direction) {
-	
+	var qt = 1
+    var last = 0
+
+    for(var i = 0; i < mainAxis.length; i++) {
+      	//horizontal and vertical
+		if (direction === 'hv') {
+			last = i
+			for(var j = 0; j < mainAxis.length; j++) {
+				if (qt < 4) {
+					if ((mainAxis[j] == mainAxis[last] + 1) && (auxAxis[j] == auxAxis[last])) {
+						last = j
+						qt++
+					}
+				} else {
+					return qt
+				}
+			}
+			if (qt < 4) {
+				qt = 1
+			} else {
+				return qt
+			}
+		}
+    }
+    return qt
 }
+
+// #endregion Verify Winner
