@@ -186,6 +186,8 @@ nsSocket.on('verifyWinner', (board, player1, player2) => {
 	} else if (horizontalPlayer2 >= 4 || verticalPlayer2 >= 4 || rightDiagonalPlayer2 >= 4 || leftDiagonalPlayer2 >= 4) {
 		winner = player2
 	}
+
+	// Falta o Return - Tirar dúvida com o Du
 })
 
 function verify(mainAxis, auxAxis, direction) {
