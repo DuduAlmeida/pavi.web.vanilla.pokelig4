@@ -37,6 +37,7 @@ export const environment = {
             joinRoom: 'joinRoom',
             loadRoom: 'nsRoomLoad',
             countUsers: 'countUsers',
+            onGetWinner: 'onGetWinner',
             verifyWinner: 'verifyWinner',
             getListPlayers: 'listPlayers',
             countUsersInGame: 'countUsers',

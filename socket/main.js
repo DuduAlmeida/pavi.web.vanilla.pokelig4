@@ -189,7 +189,7 @@ nsSocket.on('verifyWinner', (board, player1Id, player2Id) => {
 
 	// Falta o Return - Tirar dúvida com o Du
 	if (!!winner) {
-		io.of(namespace.endpoint).to(roomName).emit('onWin', ({
+		io.of(namespace.endpoint).to(roomName).emit('onGetWinner', ({
 			hasWinner: !!winner,
 			winner: winner,
 		}));

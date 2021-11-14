@@ -77,14 +77,21 @@ export class GameService {
   closeGame() {
     window.onunload = function (e) {
       console.log('Chamou');
-      if (!!this.user) {
-        this.socketNamespace.emit(environment.socket.event.removePlayerInServer, this.user);
-      }
+      this._closeGameAtSocket();
     };
   }
 
   checkIfHasWinner() {
     this.socketNamespace.emit(environment.socket.event.verifyWinner, this.board, ...this._getUsersId);
+  }
+
+  onGetWinner() {
+    this.socketNamespace.on(environment.socket.event.onGetWinner, (winnerObject) => {
+      if (!!winnerObject && !!winnerObject.hasWinner) {
+        this._closeGameAtSocket();
+        this.__buildWinner(winnerObject.winner);
+      }
+    });
   }
 
   // #endregion Public Methods
@@ -98,8 +105,8 @@ export class GameService {
       goToNextPage(environment.slugs.insertName);
   }
 
-  _findUserInList(listUsers) {
-    return listUsers.find(player => player.id == this.user.id);
+  _findUserInList(listUsers, userIdToFind = this.user.id) {
+    return listUsers.find(player => player.id == userIdToFind);
   }
 
   _hasUserInList(listUsers) {
@@ -120,6 +127,19 @@ export class GameService {
 
   _getUsersId() {
     return this.listPlayers.map(player => player.id);
+  }
+
+  _closeGameAtSocket() {
+    if (!!this.user) {
+      this.socketNamespace.emit(environment.socket.event.removePlayerInServer, this.user);
+    }
+  }
+
+  __buildWinner(winnnerId) {
+    const userWinner = this._findUserInList(this.listUsers, winnnerId);
+
+    //TODO: ADD WINNER VISUAL
+    alert(`O jogador ${userWinner.name} foi o vencedor!`);
   }
 
   // #endregion Private Methods
