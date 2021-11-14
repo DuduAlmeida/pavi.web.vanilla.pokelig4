@@ -188,6 +188,12 @@ nsSocket.on('verifyWinner', (board, player1, player2) => {
 	}
 
 	// Falta o Return - Tirar dúvida com o Du
+	if(!!winner){	
+		io.of(namespace.endpoint).to(roomName).emit('onWin', ({
+			hasWinner: !!winner,
+			winner: winner,
+		}));
+	}
 })
 
 function verify(mainAxis, auxAxis, direction) {
