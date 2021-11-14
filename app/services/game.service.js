@@ -15,9 +15,11 @@ export class GameService {
   // #region Constructor
 
   constructor(hasToGoToGameWhenValid = false) {
+    this.board = [];
     this.user = null;
-    this.hasToGoToGameWhenValid = hasToGoToGameWhenValid;
+    this.listPlayers = [];
     this.countUsersInGame = 0;
+    this.hasToGoToGameWhenValid = hasToGoToGameWhenValid;
 
     this._validateStorageData();
 
@@ -81,6 +83,10 @@ export class GameService {
     };
   }
 
+  checkIfHasWinner() {
+    this.socketNamespace.emit(environment.socket.event.verifyWinner, this.board, ...this._getUsersId);
+  }
+
   // #endregion Public Methods
 
   // #region Private Methods
@@ -109,6 +115,11 @@ export class GameService {
     userStored.fromAnotherObject(userSocket);
     setIntoStorage(environment.storageKey.currentUser, userStored);
     this.user = userStored;
+    this.listPlayers = listUsers;
+  }
+
+  _getUsersId() {
+    return this.listPlayers.map(player => player.id);
   }
 
   // #endregion Private Methods

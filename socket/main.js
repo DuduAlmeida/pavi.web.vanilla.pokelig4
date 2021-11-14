@@ -124,7 +124,7 @@ listNamespaces.forEach((namespace) => {
 			if (!!nsRoom.findUser(user)) {
 				nsRoom.removeUser(user);
 			}
-			
+
 			console.log('Chamou pra remover');
 			io.of(namespace.endpoint).to(roomName).emit('listPlayers', nsRoom.users);
 		});
@@ -143,20 +143,20 @@ function updateUsersLengthInRoom(namespace, roomToJoin) {
 // #endregion OnStart Application
 
 // #region Verify Winner
-nsSocket.on('verifyWinner', (board, player1, player2) => {
-	let winner = ''
-	var linePlayer1 = []
-    var columnPlayer1 = []
-    var linePlayer2 = []
-    var columnPlayer2 = []
+nsSocket.on('verifyWinner', (board, player1Id, player2Id) => {
+	let winner = '';
+	let linePlayer1 = [];
+	let linePlayer2 = [];
+	let columnPlayer1 = [];
+	let columnPlayer2 = [];
 
 	// #region Play Mapping
 	board.map((lines, lineIndex) => {
 		lines.map((columns, columnIndex) => {
-			if (columns === player1) {
+			if (columns === player1Id) {
 				linePlayer1.push(lineIndex)
 				columnPlayer1.push(columnIndex)
-			} else if (columns === player2) {
+			} else if (columns === player2Id) {
 				linePlayer2.push(lineIndex)
 				columnPlayer2.push(columnIndex)
 			}
@@ -165,30 +165,30 @@ nsSocket.on('verifyWinner', (board, player1, player2) => {
 	// #endregion Play Mapping
 
 	//horizontal
-    const horizontalPlayer1 = verify(linePlayer1, columnPlayer1, 'hv')
-    const horizontalPlayer2 = verify(linePlayer2, columnPlayer2, 'hv')
+	const horizontalPlayer1 = verify(linePlayer1, columnPlayer1, 'hv')
+	const horizontalPlayer2 = verify(linePlayer2, columnPlayer2, 'hv')
 
 	//vertical
-    const verticalPlayer1 = verify(columnPlayer1, linePlayer1, 'hv')
-    const verticalPlayer2 = verify(columnPlayer2, linePlayer2, 'hv')
+	const verticalPlayer1 = verify(columnPlayer1, linePlayer1, 'hv')
+	const verticalPlayer2 = verify(columnPlayer2, linePlayer2, 'hv')
 
 	//right diagonal
-    const rightDiagonalPlayer1 = verify(linePlayer1, columnPlayer1, 'rd')
-    const rightDiagonalPlayer2 = verify(linePlayer2, columnPlayer2, 'rd')
+	const rightDiagonalPlayer1 = verify(linePlayer1, columnPlayer1, 'rd')
+	const rightDiagonalPlayer2 = verify(linePlayer2, columnPlayer2, 'rd')
 
 	//left diagonal
-    const leftDiagonalPlayer1 = verify(linePlayer1, columnPlayer1, 'ld')
-    const leftDiagonalPlayer2 = verify(linePlayer2, columnPlayer2, 'ld')
+	const leftDiagonalPlayer1 = verify(linePlayer1, columnPlayer1, 'ld')
+	const leftDiagonalPlayer2 = verify(linePlayer2, columnPlayer2, 'ld')
 
 	//check if there was a winner
 	if (horizontalPlayer1 >= 4 || verticalPlayer1 >= 4 || rightDiagonalPlayer1 >= 4 || leftDiagonalPlayer1 >= 4) {
-		winner = player1
+		winner = player1Id
 	} else if (horizontalPlayer2 >= 4 || verticalPlayer2 >= 4 || rightDiagonalPlayer2 >= 4 || leftDiagonalPlayer2 >= 4) {
-		winner = player2
+		winner = player2Id
 	}
 
 	// Falta o Return - Tirar dúvida com o Du
-	if(!!winner){	
+	if (!!winner) {
 		io.of(namespace.endpoint).to(roomName).emit('onWin', ({
 			hasWinner: !!winner,
 			winner: winner,
@@ -198,13 +198,13 @@ nsSocket.on('verifyWinner', (board, player1, player2) => {
 
 function verify(mainAxis, auxAxis, direction) {
 	var qt = 1
-    var last = 0
+	var last = 0
 
-    for(var i = 0; i < mainAxis.length; i++) {
-      	//horizontal and vertical
+	for (var i = 0; i < mainAxis.length; i++) {
+		//horizontal and vertical
 		if (direction === 'hv') {
 			last = i
-			for(var j = 0; j < mainAxis.length; j++) {
+			for (var j = 0; j < mainAxis.length; j++) {
 				if (qt < 4) {
 					if ((mainAxis[j] == mainAxis[last] + 1) && (auxAxis[j] == auxAxis[last])) {
 						last = j
@@ -224,11 +224,11 @@ function verify(mainAxis, auxAxis, direction) {
 		//right diagonal
 		else if (direction === 'rd') {
 			last = i
-			for(var j = 0; j < mainAxis.length; j++) {
-				if(qt < 4) {
-					if ((mainAxis[j] == mainAxis[last] + 1) && (auxAxis[j] == auxAxis[last] - 1)){
-					last = j
-					qt++
+			for (var j = 0; j < mainAxis.length; j++) {
+				if (qt < 4) {
+					if ((mainAxis[j] == mainAxis[last] + 1) && (auxAxis[j] == auxAxis[last] - 1)) {
+						last = j
+						qt++
 					}
 				} else {
 					return qt
@@ -240,24 +240,24 @@ function verify(mainAxis, auxAxis, direction) {
 		//left diagonal
 		else if (direction === 'ld') {
 			last = i
-			for(var j = 0; j < mainAxis.length; j++) {
-				if(qt < 4) {
-					if ((mainAxis[j] == mainAxis[last] + 1) && (auxAxis[j] == auxAxis[last] + 1)){
-					last = j
-					qt++
+			for (var j = 0; j < mainAxis.length; j++) {
+				if (qt < 4) {
+					if ((mainAxis[j] == mainAxis[last] + 1) && (auxAxis[j] == auxAxis[last] + 1)) {
+						last = j
+						qt++
 					}
 				} else {
 					return qt
 				}
 			}
 			if (qt < 4) {
-			  	qt = 1
+				qt = 1
 			} else {
-			  	return qt
+				return qt
 			}
 		}
-    }
-    return qt
+	}
+	return qt
 }
 
 // #endregion Verify Winner
