@@ -16,9 +16,8 @@
 }
 
 .lig4-size, .game__content__lig4 {
-  max-width: min(95vw, 60rem);
-  min-width: min(95vw, 60rem);
-  width: min(95vw, 60rem);
+  min-width: min(150vw, 100rem);
+  width: min(150vw, 100rem);
 }
 
 .game {
@@ -89,6 +88,40 @@
 }
 .game__content__chat .pkm-modal__content__input {
   width: 100%;
+}
+.game #game {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+.game .game-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.game .board {
+  display: grid;
+  background: #222222;
+  gap: 10px;
+  padding: 10px;
+  margin: 10px;
+  flex-grow: 1;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  border-radius: 6px;
+}
+.game .board-tile {
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.game .board-tile:hover {
+  background: #ebebeb;
+  transition: 0.5s;
 }
 
 /*# sourceMappingURL=game.page.css.map */

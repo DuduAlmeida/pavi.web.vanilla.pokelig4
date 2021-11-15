@@ -20,9 +20,8 @@
 }
 
 .lig4-size {
-  max-width: calc(min(95vw, 60rem));
-  min-width: calc(min(95vw, 60rem));
-  width: calc(min(95vw, 60rem));
+  min-width: calc(min(150vw, 100rem));
+  width: calc(min(150vw, 100rem));
 }
 
 .game {
@@ -131,4 +130,42 @@
     }
   }
 
+  #game {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .game-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
+  .board {
+    display: grid;
+    background: #222222;
+    gap: 10px;
+    padding: 10px;
+    margin: 10px;
+    flex-grow: 1;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    border-radius: 6px;
+  }
+
+  .board-tile {
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .board-tile:hover {
+    background: #ebebeb;
+    transition: 0.5s;
+  }
 }

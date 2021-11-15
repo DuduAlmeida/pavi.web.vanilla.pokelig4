@@ -7,6 +7,7 @@ const bundler = new Bundler([
   'public/await-user.html',
   'public/insert-name.html',
   'public/select-pokemon.html',
+  'public/grid.html',
 ]);
 const app = express();
 
