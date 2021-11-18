@@ -1,10 +1,12 @@
+const Game = require("./Game");
+
 class Room {
   constructor(roomId, roomName, namespace, isPrivate = false) {
     this.users = [];
     this.id = roomId;
     this.name = roomName;
     this.chatHistory = [];
-    this.gameHistory = [];
+    this.game = new Game();
     this.namespace = namespace;
     this.isPrivate = isPrivate;
   }

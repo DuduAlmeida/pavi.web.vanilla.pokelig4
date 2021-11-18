@@ -130,6 +130,26 @@ listNamespaces.forEach((namespace) => {
 		});
 
 		// #endregion Add Or Remove Player
+
+		// #region Game Listenners
+
+		nsSocket.on('makeMove', (gameMove) => {
+			const { gameIndex, playerId } = gameMove;
+
+			const nsRoom = namespace.rooms[0];
+			let game = nsRoom.game;
+			
+			game.makeMove(gameIndex, playerId);
+
+			const gameTurn = updateGameTurn(game);
+			const gameStatus = updateGameStatus(game);
+
+			io.of(namespace.endpoint).to(roomName).emit('getGameStatus', gameStatus);
+			io.of(namespace.endpoint).to(roomName).emit('getGameTurn', gameTurn);
+		});
+
+		// #endregion Game Listenners
+
 	})
 });
 
@@ -138,6 +158,23 @@ function updateUsersLengthInRoom(namespace, roomToJoin) {
 	clients = Array.from(clients);
 
 	io.of(namespace.endpoint).in(roomToJoin).emit('countUsers', Object.keys(clients).length);
+}
+
+function updateGameTurn(game) {
+	const currentUser = game.users.find(user => user.id === game.userIdPlaying);
+	return `É a vez de ${currentUser.name}.`;
+}
+
+function updateGameStatus(game) {
+	let status = "In Progress";
+
+	if (game.findWinningCombination()) {
+		status = `${game.turn} is the Winner!`;
+	} else if (!game.isInProgress()) {
+		status = "It's a tie!";
+	}
+
+	return status;
 }
 
 // #endregion OnStart Application
