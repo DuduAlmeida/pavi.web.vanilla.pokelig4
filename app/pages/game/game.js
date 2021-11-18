@@ -2,6 +2,7 @@ export default class Game {
     constructor() {
         this.turn = "X";
         this.board = new Array(42).fill(null);   
+        this.history = [];
     }
 
     nextTurn() {
@@ -23,6 +24,11 @@ export default class Game {
         
         if(this.board[index+7] != null || lowerIndexes.includes(index)){
             this.board[index] = this.turn;
+            this.history.push({
+                boardIndex: index,
+                player: this.turn,
+            });
+            
             if(!this.findWinningCombination()){
                 this.nextTurn();
             }  

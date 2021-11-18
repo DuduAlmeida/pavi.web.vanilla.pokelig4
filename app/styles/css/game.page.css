@@ -10,14 +10,14 @@
 }
 
 .content-pattern, .game__content, .game__header {
-  max-width: min(95vw, 60rem);
-  min-width: min(95vw, 60rem);
-  width: min(95vw, 60rem);
+  max-width: min(95vw, 80rem);
+  min-width: min(95vw, 80rem);
+  width: min(95vw, 80rem);
 }
 
 .lig4-size, .game__content__lig4 {
-  min-width: min(150vw, 100rem);
-  width: min(150vw, 100rem);
+  min-width: min(95vw, 80rem);
+  width: min(95vw, 80rem);
 }
 
 .game {

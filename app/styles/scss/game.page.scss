@@ -10,18 +10,14 @@
 }
 
 .content-pattern {
-  // max-width: calc(min(80vw, 40rem));
-  // min-width: calc(min(80vw, 40rem));
-  // width: calc(min(80vw, 40rem));
-
-  max-width: calc(min(95vw, 60rem));
-  min-width: calc(min(95vw, 60rem));
-  width: calc(min(95vw, 60rem));
+  max-width: calc(min(95vw, 80rem));
+  min-width: calc(min(95vw, 80rem));
+  width: calc(min(95vw, 80rem));
 }
 
 .lig4-size {
-  min-width: calc(min(150vw, 100rem));
-  width: calc(min(150vw, 100rem));
+  min-width: calc(min(95vw, 80rem));
+  width: calc(min(95vw, 80rem));
 }
 
 .game {
