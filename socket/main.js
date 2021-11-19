@@ -70,6 +70,7 @@ listNamespaces.forEach((namespace) => {
 			nsSocket.emit('ChatHistoryCatchUp', nsRoom.chatHistory);
 			nsSocket.emit('GameHistoryCatchUp', nsRoom.gameHistory);
 			updateUsersLengthInRoom(namespace, roomToJoin);
+			emitGameData(namespace, nsRoom.game);
 			io.of(namespace.endpoint).to(nsRoom.name).emit('listPlayers', nsRoom.users);
 		});
 
@@ -134,18 +135,14 @@ listNamespaces.forEach((namespace) => {
 		// #region Game Listenners
 
 		nsSocket.on('makeMove', (gameMove) => {
-			const { gameIndex, playerId } = gameMove;
+			const { gameIndex, playerId, pokemon, canUsePrimary, } = gameMove;
 
 			const nsRoom = namespace.rooms[0];
 			let game = nsRoom.game;
-			
-			game.makeMove(gameIndex, playerId);
 
-			const gameTurn = updateGameTurn(game);
-			const gameStatus = updateGameStatus(game);
+			game.makeMove(gameIndex, playerId, pokemon, canUsePrimary);
 
-			io.of(namespace.endpoint).to(roomName).emit('getGameStatus', gameStatus);
-			io.of(namespace.endpoint).to(roomName).emit('getGameTurn', gameTurn);
+			emitGameData(namespace, game);
 		});
 
 		// #endregion Game Listenners
@@ -160,18 +157,32 @@ function updateUsersLengthInRoom(namespace, roomToJoin) {
 	io.of(namespace.endpoint).in(roomToJoin).emit('countUsers', Object.keys(clients).length);
 }
 
+function emitGameData(namespace, game) {
+	const nsRoom = namespace.rooms[0];
+	const roomName = nsRoom.name;
+
+	const gameTurn = updateGameTurn(game);
+	const gameStatus = updateGameStatus(game);
+
+	io.of(namespace.endpoint).to(roomName).emit('getGameTurn', gameTurn);
+	io.of(namespace.endpoint).to(roomName).emit('getGameBoard', game.board);
+	io.of(namespace.endpoint).to(roomName).emit('getGameStatus', gameStatus);
+}
+
 function updateGameTurn(game) {
-	const currentUser = game.users.find(user => user.id === game.userIdPlaying);
-	return `É a vez de ${currentUser.name}.`;
+	const currentUser = game.currentUser;
+
+	return !!currentUser ? `É a vez de ${currentUser.name}.` : '';
 }
 
 function updateGameStatus(game) {
-	let status = "In Progress";
+	const currentUser = game.currentUser;
+	let status = "Jogo em Andamento";
 
 	if (game.findWinningCombination()) {
-		status = `${game.turn} is the Winner!`;
+		status = `${currentUser.name || ''} é o vencedor!`;
 	} else if (!game.isInProgress()) {
-		status = "It's a tie!";
+		status = "É um empate!";
 	}
 
 	return status;

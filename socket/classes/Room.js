@@ -13,15 +13,21 @@ class Room {
 
   addUser(user) {
     const hasSamePokemon = !!this.findUserWithSamePokemon(user);
-    console.log('User: ', user.name, hasSamePokemon);
     user.canUsePrimary = !hasSamePokemon;
+
     this.users.push(user);
+    this.game.users.push(user);
+
+    if (this.game.users.length === 1) {
+      this.game.userIdPlaying = this.game.users[0].id;
+    }
   }
 
   removeUser(user) {
     const index = this.findUserIndex(user);
 
     this.users = [...this.users.slice(0, index), ...this.users.slice(index + 1)];
+    this.game.users = [...this.users];
   }
 
   addMessage(message) {

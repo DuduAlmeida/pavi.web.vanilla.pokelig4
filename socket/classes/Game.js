@@ -7,10 +7,10 @@ class Game {
   }
 
   nextTurn() {
-    this.userIdPlaying = this.users.find(user => user.id != userPlaying).id;
+    this.userIdPlaying = this.users.find(user => user.id != this.userIdPlaying).id;
   }
 
-  makeMove(i, playerId) {
+  makeMove(i, playerId, pokemon, canUsePrimary) {
     const lowerIndexes = [35, 36, 37, 38, 39, 40, 41];
 
     const index = parseInt(i);
@@ -28,11 +28,15 @@ class Game {
     }
 
     if (this.board[index + 7] != null || lowerIndexes.includes(index)) {
-      this.board[index] = this.userIdPlaying;
-      this.history.push({
+      const lig4Move = {
         boardIndex: index,
         player: this.userIdPlaying,
-      });
+        pokemon,
+        canUsePrimary,
+      };
+
+      this.board[index] = { ...lig4Move };
+      this.history.push(lig4Move);
 
       if (!this.findWinningCombination()) {
         this.nextTurn();
@@ -141,10 +145,14 @@ class Game {
     for (const combination of winningCombinations) {
       const [a, b, c, d] = combination;
 
-      if (this.board[a] &&
-        (this.board[a] === this.board[b] &&
-          this.board[a] === this.board[c] &&
-          this.board[a] === this.board[d])) {
+      if (
+        !!this.board[a] && !!this.board[a].player
+        && !!this.board[b] && !!this.board[b].player
+        && !!this.board[c] && !!this.board[c].player
+        && !!this.board[d] && !!this.board[d].player &&
+        (this.board[a].player === this.board[b].player &&
+          this.board[a].player === this.board[c].player &&
+          this.board[a].player === this.board[d].player)) {
         return combination;
       }
     }
@@ -153,6 +161,10 @@ class Game {
 
   isInProgress() {
     return !this.findWinningCombination() && this.board.includes(null);
+  }
+
+  get currentUser() {
+    return this.users.find(user => user.id === this.userIdPlaying);
   }
 }
 
