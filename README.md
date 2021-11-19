@@ -151,5 +151,6 @@ Contém as regras e eventos principais do socket da aplicação.
 - Adicionar listenner que reinicia o jogo.
 - Adicionar maneira de entrar no jogo como visitante.
 - Adicionar feature de "escorregar" ao clicar em uma célula sem pokémons abaixo.
+- Sair da página do jogo ao não ter jogadores cadastrados.
 
 - ATENÇÃO: Os dados do usuário são salvos no cache, ao abrir diferentes abas no mesmo desktop, abra com cache diferente (Guias anônimas diferentes).
