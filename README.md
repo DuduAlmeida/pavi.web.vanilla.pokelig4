@@ -147,10 +147,9 @@ Contém as regras e eventos principais do socket da aplicação.
 - <a href="https://github.com/rafaelos-git/logica_lig4" target="_blank">Acessar repositório.</a>
 
 ## TODO:
-- Adicionar diferenciação para quando usuário selecionar o mesmo pokemon
-- Finalizar abstração das regras do lig4 para JavaScript.
-- Adicionar regra de negócio para o lig4 (slack).
-- Adicionar regra de negócio para o lig4 (front-end).
-- Construir componente visual para o LIG4.
-- Adicionar regra de negócio para ir para a página de jogos, e assim, reconhecer se tem jogadores suficientes para começar.
+- Adicionar botão para reiniciar o jogo Front e chamar o socket.
+- Adicionar listenner que reinicia o jogo.
+- Adicionar maneira de entrar no jogo como visitante.
+- Adicionar feature de "escorregar" ao clicar em uma célula sem pokémons abaixo.
+
 - ATENÇÃO: Os dados do usuário são salvos no cache, ao abrir diferentes abas no mesmo desktop, abra com cache diferente (Guias anônimas diferentes).
