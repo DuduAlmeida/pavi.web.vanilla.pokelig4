@@ -149,8 +149,9 @@ Contém as regras e eventos principais do socket da aplicação.
 ## TODO:
 - Adicionar botão para reiniciar o jogo Front e chamar o socket.
 - Adicionar listenner que reinicia o jogo.
-- Adicionar maneira de entrar no jogo como visitante.
+- Adicionar maneira de entrar no jogo como visitante. (Edu)
 - Adicionar feature de "escorregar" ao clicar em uma célula sem pokémons abaixo.
 - Sair da página do jogo ao não ter jogadores cadastrados.
+- Adicionar modal de aviso, para quando o usuário ganhar. (Edu)
 
 - ATENÇÃO: Os dados do usuário são salvos no cache, ao abrir diferentes abas no mesmo desktop, abra com cache diferente (Guias anônimas diferentes).
