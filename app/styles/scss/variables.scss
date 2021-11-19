@@ -1,6 +1,6 @@
 :root {
     --color-background: #f5f5f5;
-    --color-primary: #FF6666;
+    --color-primary: #ff6666;
     --color-secondary: #333333;
 
     --header-height: 50rem;
@@ -15,10 +15,12 @@
     --small-shadow-red: 0px 4px 16px rgba(0, 0, 0, 0.12), 0px -4px 16px rgba(255, 102, 102, 0.12);
     --card-shadow: 0px 28px 38px rgba(0, 0, 0, 0.0925754), 0px -28px 38px rgba(255, 255, 255, 0.625754);
 
+    --cell-width: calc(calc(min(95vw, 80rem) - 10rem) / 7);
+    --cell-height: calc((calc(99vh - (1.5rem + 3rem + 3rem + 21rem)) * 0.8) / 6);
+
     @media (max-width: 900px) and (min-width: 768px) {
         --page-content-width: min(1000px, 85%);
     }
 }
 
-
-@import './refactor.scss';
+@import "./refactor.scss";

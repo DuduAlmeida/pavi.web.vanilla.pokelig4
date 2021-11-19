@@ -14,12 +14,16 @@ export class GameService {
 
   // #region Constructor
 
-  constructor(hasToGoToGameWhenValid = false) {
-    this.board = [];
+  constructor(hasToGoToGameWhenValid = false, gameQuery = '', turnQuery = '', statusQuery = '') {
     this.user = null;
     this.listPlayers = [];
     this.countUsersInGame = 0;
+    this.board = new Array(42).fill(null);
     this.hasToGoToGameWhenValid = hasToGoToGameWhenValid;
+
+    this.gameQuery = gameQuery;
+    this.turnQuery = turnQuery;
+    this.statusQuery = statusQuery;
 
     this._validateStorageData();
 
@@ -46,6 +50,10 @@ export class GameService {
         this.getUsersInGame();
         this.addUserInGame();
         this.closeGame();
+
+        if (!this.hasToGoToGameWhenValid) {
+          this.prepareBoardGame(this.gameQuery, this.statusQuery, this.turnQuery)
+        }
       });
     });
   }
@@ -81,16 +89,57 @@ export class GameService {
     };
   }
 
-  checkIfHasWinner() {
-    this.socketNamespace.emit(environment.socket.event.verifyWinner, this.board, ...this._getUsersId);
+  makeMove(gameIndex) {
+    if (!gameIndex) return;
+
+    this.socketNamespace.emit(environment.socket.event.gameMakeMove, {
+      gameIndex,
+      playerId: this.user.id,
+      pokemon: this.user.pokemon,
+      canUsePrimary: this.user.canUsePrimary,
+    });
   }
 
-  onGetWinner() {
-    this.socketNamespace.on(environment.socket.event.onGetWinner, (winnerObject) => {
-      if (!!winnerObject && !!winnerObject.hasWinner) {
-        this._closeGameAtSocket();
-        this.__buildWinner(winnerObject.winner);
-      }
+  prepareBoardGame(gameQuery, statusQuery, turnQuery) {
+    this._buildGameBoardHTML(gameQuery);
+    this.updateTurn(turnQuery);
+    this.updateBoard(gameQuery);
+    this.updateStatus(statusQuery);
+    this._updateGameBoardHTML(gameQuery);
+
+    $(gameQuery).querySelectorAll(".board-tile").forEach(cell => {
+      cell.addEventListener("click", () => {
+        this.onCellClick(cell.dataset.index);
+      });
+    });
+  }
+
+  onCellClick(cellIndex) {
+    this.makeMove(cellIndex);
+  }
+
+  updateStatus(statusQuery) {
+    this.statusQuery = statusQuery;
+
+    this.socketNamespace.on(environment.socket.event.getGameStatus, (gameStatus) => {
+      $(this.statusQuery).innerHTML = gameStatus;
+    });
+  }
+
+  updateTurn(turnQuery) {
+    this.turnQuery = turnQuery;
+
+    this.socketNamespace.on(environment.socket.event.getGameTurn, (gameTurn) => {
+      $(this.turnQuery).innerHTML = gameTurn;
+    });
+  }
+
+  updateBoard(gameQuery) {
+    this.gameQuery = gameQuery;
+
+    this.socketNamespace.on(environment.socket.event.getGameBoard, (gameBoard) => {
+      this.board = gameBoard;
+      this._updateGameBoardHTML(this.gameQuery);
     });
   }
 
@@ -135,12 +184,74 @@ export class GameService {
     }
   }
 
-  __buildWinner(winnnerId) {
-    const userWinner = this._findUserInList(this.listUsers, winnnerId);
+  _updateGameBoardHTML(gameQuery) {
+    for (let i = 0; i < this.board.length; i++) {
+      const tile = $(gameQuery).querySelector(`.board-tile[data-index="${i}"]`);
+      const color = !!this.board[i]
+        ? (!!this.board[i].canUsePrimary ? this.board[i].pokemon.color : this.board[i].pokemon.alternativeColor)
+        : 'transparent';
 
-    //TODO: ADD WINNER VISUAL
-    alert(`O jogador ${userWinner.name} foi o vencedor!`);
+      tile.innerHTML = !!this.board[i]
+        ? `<div class="pokemon-cell" style="background-color: ${color}"><img src="${this.board[i].pokemon.imageUrl}" /></div>`
+        : this.board[i];
+    }
   }
+
+  _buildGameBoardHTML(gameQuery) {
+    this.root = $(gameQuery);
+    this.root.innerHTML = `
+            <div class="game-header">
+                <div class="game-header-turn">
+                    Player 1's turn
+                </div>
+            </div>
+            <div class="board">
+                <div class="board-tile" data-index="0"></div>
+                <div class="board-tile" data-index="1"></div>
+                <div class="board-tile" data-index="2"></div>
+                <div class="board-tile" data-index="3"></div>
+                <div class="board-tile" data-index="4"></div>
+                <div class="board-tile" data-index="5"></div>
+                <div class="board-tile" data-index="6"></div>
+                <div class="board-tile" data-index="7"></div>
+                <div class="board-tile" data-index="8"></div>
+                <div class="board-tile" data-index="9"></div>
+                <div class="board-tile" data-index="10"></div>
+                <div class="board-tile" data-index="11"></div>
+                <div class="board-tile" data-index="12"></div>
+                <div class="board-tile" data-index="13"></div>
+                <div class="board-tile" data-index="14"></div>
+                <div class="board-tile" data-index="15"></div>
+                <div class="board-tile" data-index="16"></div>
+                <div class="board-tile" data-index="17"></div>
+                <div class="board-tile" data-index="18"></div> 
+                <div class="board-tile" data-index="19"></div>
+                <div class="board-tile" data-index="20"></div>
+                <div class="board-tile" data-index="21"></div>
+                <div class="board-tile" data-index="22"></div>
+                <div class="board-tile" data-index="23"></div>
+                <div class="board-tile" data-index="24"></div>
+                <div class="board-tile" data-index="25"></div>
+                <div class="board-tile" data-index="26"></div>
+                <div class="board-tile" data-index="27"></div>
+                <div class="board-tile" data-index="28"></div>
+                <div class="board-tile" data-index="29"></div>
+                <div class="board-tile" data-index="30"></div>
+                <div class="board-tile" data-index="31"></div>
+                <div class="board-tile" data-index="32"></div>
+                <div class="board-tile" data-index="33"></div>
+                <div class="board-tile" data-index="34"></div>
+                <div class="board-tile" data-index="35"></div>
+                <div class="board-tile" data-index="36"></div>
+                <div class="board-tile" data-index="37"></div>
+                <div class="board-tile" data-index="38"></div>
+                <div class="board-tile" data-index="39"></div>
+                <div class="board-tile" data-index="40"></div>
+                <div class="board-tile" data-index="41"></div>
+            </div>
+        `;
+  }
+
 
   // #endregion Private Methods
 }

@@ -20,7 +20,12 @@ export class GamePage {
 		this.chatInputQuery = '#chat-input';
 		this.chatContainerQuery = '#chat-container';
 		this.chatService = new ChatService();
-		this.gameService = new GameService();
+		this.gameService = new GameService(
+			false,
+			'#game',
+			'.game-header-turn',
+			'.game__header__status',
+		);
 
 		this._validateStorageData();
 		this._listenChatForm(this.chatFormQuery);
