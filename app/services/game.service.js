@@ -6,6 +6,7 @@ import { $ } from '../utils/jquery.util';
 import { User } from '../models/user.proxy';
 import { goToNextPage } from '../utils/page.util';
 import { environment } from "../environments/environment";
+import { generateModalEvents } from '../utils/modal.util';
 import { getFromStorage, setIntoStorage } from '../utils/storage.util';
 
 // #endregion Imports
@@ -123,6 +124,20 @@ export class GameService {
 
     this.socketNamespace.on(environment.socket.event.getGameStatus, (gameStatus) => {
       $(this.statusQuery).innerHTML = gameStatus;
+
+      if (gameStatus.toLocaleLowerCase().search('vencedor') >= 0) {
+        $('#game-message__text').innerHTML = gameStatus;
+        $('#game-message').classList.add('open');
+        
+        const ListCloseModalButton = $('#game-message').querySelectorAll('.close-modal');
+        ListCloseModalButton.forEach(function (modalToExist) {
+          modalToExist.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            $('#game-message').classList.remove('open');
+          });
+        });
+      }
     });
   }
 
