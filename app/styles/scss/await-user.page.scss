@@ -30,10 +30,19 @@
   box-shadow: var(--card-shadow);
 
   @extend .panel-size;
+
+  .pkm-centered-text {
+    margin-bottom: 1rem;
+  }
 }
 
 .pkm-await-img {
-  margin: 10rem;
+  margin: auto;
+
+  img {
+    margin: auto;
+    max-width: 95%;
+  }
 }
 
 .await-user {

@@ -26,9 +26,16 @@
   background-color: white;
   box-shadow: var(--card-shadow);
 }
+.pkm-await-panel .pkm-centered-text {
+  margin-bottom: 1rem;
+}
 
 .pkm-await-img {
-  margin: 10rem;
+  margin: auto;
+}
+.pkm-await-img img {
+  margin: auto;
+  max-width: 95%;
 }
 
 .await-user {
