@@ -16,10 +16,13 @@ class Room {
     user.canUsePrimary = !hasSamePokemon;
 
     this.users.push(user);
-    this.game.users.push(user);
+    
+    if(this.game.users.length <= 2){
+      this.game.users.push(user);
 
-    if (this.game.users.length === 1) {
-      this.game.userIdPlaying = this.game.users[0].id;
+      if (this.game.users.length === 1) {
+        this.game.userIdPlaying = this.game.users[0].id;
+      }
     }
   }
 
