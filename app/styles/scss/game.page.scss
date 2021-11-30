@@ -128,7 +128,7 @@
     }
 
     &__message {
-      width: 100%;      
+      width: 100%;
 
       .pkm-modal__content {
         &__title {
@@ -142,7 +142,7 @@
           text-align: center;
           color: var(--color-secondary);
           text-shadow: var(--small-shadow-red);
-        }        
+        }
       }
     }
 
@@ -174,8 +174,24 @@
     .game-header {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+
       font-weight: bold;
+
+      &-button,
+      &-turn {
+        width: 45%;
+      }
+
+      &-button {
+        margin-right: 3%;
+      }
+
+      &-turn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
 
     .board {

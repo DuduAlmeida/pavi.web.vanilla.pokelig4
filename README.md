@@ -147,11 +147,7 @@ Contém as regras e eventos principais do socket da aplicação.
 - <a href="https://github.com/rafaelos-git/logica_lig4" target="_blank">Acessar repositório.</a>
 
 ## TODO:
-- Adicionar botão para Finalizar o jogo Front e chamar o socket.
-- Adicionar botão para reiniciar o jogo Front e chamar o socket.
-- Adicionar listenner que reinicia o jogo.
 - Adicionar feature de "escorregar" ao clicar em uma célula sem pokémons abaixo.
-- Sair da página do jogo ao não ter jogadores cadastrados.
 
 ## Avisos:
 - ATENÇÃO: Os dados do usuário são salvos no cache, ao abrir diferentes abas no mesmo desktop, abra com cache diferente (Guias anônimas diferentes).

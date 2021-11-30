@@ -130,6 +130,21 @@ listNamespaces.forEach((namespace) => {
 			io.of(namespace.endpoint).to(roomName).emit('listPlayers', nsRoom.users);
 		});
 
+		nsSocket.on('endGame', (player) => {
+			let user = new User();
+			user.updateFromInterface(player);
+
+			const nsRoom = namespace.rooms[0];
+			const roomName = nsRoom.name;
+
+			if (!!nsRoom.findUser(user)) {
+				nsRoom.restartRoom();
+			}
+
+			console.log('Chamou pra remover');
+			io.of(namespace.endpoint).to(roomName).emit('listPlayers', nsRoom.users);
+		});
+
 		// #endregion Add Or Remove Player
 
 		// #region Game Listenners

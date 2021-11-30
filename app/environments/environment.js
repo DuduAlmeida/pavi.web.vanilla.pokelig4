@@ -48,6 +48,7 @@ export const environment = {
             updateChatHistory: 'ChatHistoryCatchUp',
             addPlayerIntoServer: 'addPlayerIntoServer',
             removePlayerInServer: 'removePlayerInServer',
+            endGame: 'endGame',
         }
     },
 }

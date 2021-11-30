@@ -124,8 +124,19 @@
 .game__content .game-header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-weight: bold;
+}
+.game__content .game-header-button, .game__content .game-header-turn {
+  width: 45%;
+}
+.game__content .game-header-button {
+  margin-right: 3%;
+}
+.game__content .game-header-turn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .game__content .board {
   display: grid;

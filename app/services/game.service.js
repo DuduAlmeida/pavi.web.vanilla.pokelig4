@@ -50,11 +50,11 @@ export class GameService {
 
         this.getUsersInGame();
         this.addUserInGame();
-        this.closeGame();
 
         if (!this.hasToGoToGameWhenValid) {
           this.prepareBoardGame(this.gameQuery, this.statusQuery, this.turnQuery)
         }
+        this.closeGame();
       });
     });
   }
@@ -73,6 +73,8 @@ export class GameService {
         if (listPlayers.length >= 2 && this._hasUserInList(listPlayers)) {
           goToNextPage(environment.slugs.game);
         }
+      } else if (!this.hasToGoToGameWhenValid && listPlayers.length === 0) {
+        goToNextPage(environment.slugs.home);
       }
     });
   }
@@ -84,9 +86,15 @@ export class GameService {
   }
 
   closeGame() {
+    if (!this.hasToGoToGameWhenValid) {
+      $('.game-header-button').addEventListener("click", () => {
+        this._closeGameAtSocket();
+      });
+    }
+
     window.onunload = function (e) {
       console.log('Chamou');
-      this._closeGameAtSocket();
+      this._removePlayerAtSocket();
     };
   }
 
@@ -128,7 +136,7 @@ export class GameService {
       if (gameStatus.toLocaleLowerCase().search('vencedor') >= 0) {
         $('#game-message__text').innerHTML = gameStatus;
         $('#game-message').classList.add('open');
-        
+
         const ListCloseModalButton = $('#game-message').querySelectorAll('.close-modal');
         ListCloseModalButton.forEach(function (modalToExist) {
           modalToExist.addEventListener('click', function (e) {
@@ -193,9 +201,15 @@ export class GameService {
     return this.listPlayers.map(player => player.id);
   }
 
-  _closeGameAtSocket() {
+  _removePlayerAtSocket() {
     if (!!this.user) {
       this.socketNamespace.emit(environment.socket.event.removePlayerInServer, this.user);
+    }
+  }
+
+  _closeGameAtSocket() {
+    if (!!this.user) {
+      this.socketNamespace.emit(environment.socket.event.endGame, this.user);
     }
   }
 
@@ -218,6 +232,9 @@ export class GameService {
             <div class="game-header">
                 <div class="game-header-turn">
                     Player 1's turn
+                </div>
+                <div class="game-header-button pkm-btn">
+                    Finalizar Jogo
                 </div>
             </div>
             <div class="board">

@@ -66,6 +66,11 @@ class Room {
     return this.users.findIndex(user => user.id === userFinded.id);
   }
 
+  restartRoom() {
+    this.users = [];
+    this.chatHistory = [];
+    this.game = new Game();
+  }
 }
 
 module.exports = Room;
