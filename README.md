@@ -62,7 +62,8 @@ das regras de negócio.
 - <a href="https://www.figma.com/file/3lGnnmRdDA0C9aCvnwBAnV/PA?node-id=0%3A1" target="_blank">Acessar Figma</a>
 ## Vídeos Explicativos
 
-- <a href="https://www.youtube.com/watch?v=PqwXqrwFPnE" target="_blank">Assistir vídeo introdutório</a>
+- <a href="https://www.youtube.com/watch?v=PqwXqrwFPnE" target="_blank">Assistir vídeo introdutório (AC1)</a>
+- <a href="https://www.youtube.com/watch?v=2qUV_ZQJMxM" target="_blank">Assistir vídeo instrutivo para download (AC2)</a>
 
 ## Camadas do Projeto
 
