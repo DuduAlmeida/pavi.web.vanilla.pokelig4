@@ -147,8 +147,6 @@ Contém as regras e eventos principais do socket da aplicação.
 - Feita separadamente, em outro respositório, para adiantar as regras de negócio para implementação e abstração do jogo LIG4.
 - <a href="https://github.com/rafaelos-git/logica_lig4" target="_blank">Acessar repositório.</a>
 
-## TODO:
-- Adicionar feature de "escorregar" ao clicar em uma célula sem pokémons abaixo.
 
 ## Avisos:
 - ATENÇÃO: Os dados do usuário são salvos no cache, ao abrir diferentes abas no mesmo desktop, abra com cache diferente (Guias anônimas diferentes).
