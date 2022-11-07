@@ -1,5 +1,6 @@
 const Bundler = require('parcel-bundler');
 const express = require('express');
+console.log(`listening at http://localhost:`);
 
 const bundler = new Bundler([
   'public/game.html',
@@ -18,6 +19,6 @@ app.get('/', (req, res, next) => {
 
 app.use(bundler.middleware());
 
-const port = Number(1234);
+const port = Number(process.env.PORT) || Number(1234)
 app.listen(port);
 console.log(`listening at http://localhost:${port}`);
