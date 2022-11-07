@@ -18,7 +18,9 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/home.html');
 });
 
-const expressServer = app.listen(4321);
+const port = 4321
+const expressServer = app.listen(port);
+
 const io = new socketio.Server(expressServer, {
 	cors: {
 		origin: "http://localhost:1234",
