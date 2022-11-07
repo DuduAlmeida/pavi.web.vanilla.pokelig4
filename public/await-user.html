@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <link rel="stylesheet" href="../app/styles/css/variables.css" />
 
-<head>
-  <link rel="stylesheet" href="../app/styles/css/variables.css" />
-  
-  <link rel="stylesheet" href="../app/styles/scss/await-user.page.scss" />
-</head>
+    <link rel="stylesheet" href="../app/styles/scss/await-user.page.scss" />
+  </head>
 
-<body>
- 
-  <main class="await-user">
-    <header class="await-user__header">
-      <div id="backButton" class="await-user__header__back">
-        <img src="../app/assets/img/back-arrow.svg" alt="Ir para página anterior">
+  <body>
+    <main class="await-user">
+      <header class="await-user__header">
+        <div id="backButton" class="await-user__header__back">
+          <img
+            src="../app/assets/img/back-arrow.svg"
+            alt="Ir para página anterior"
+          />
+        </div>
+
+        <h1 class="await-user__header__title pkm-title">PokéLig4</h1>
+      </header>
+
+      <div class="pkm-await-panel">
+        <span class="pkm-await-img">
+          <img
+            src="../app/assets/gif/pikachu-load.gif"
+            alt="aguardando adversário"
+          />
+        </span>
+        <span class="pkm-centered-text">Aguardando adversário...</span>
       </div>
+    </main>
 
-      <h1 class="await-user__header__title pkm-title">PokéLig4</h1>
-    </header>
-
-    <div class="pkm-await-panel">
-      <span class="pkm-await-img">
-        <img src="../app/assets/gif/pikachu-load.gif" alt="aguardando adversário"/>
-      </span>
-      <span class="pkm-centered-text">Aguardando adversário...</span>
-    </div>
-  </main>
-  
-  <script src="../app/pages/await-user/await-user.main.js"></script>
-  <script src="../app/pages/await-user/await-user.page.js"></script>
-</body>
-
+    <script src="../app/pages/await-user/await-user.main.js"></script>
+    <script src="../app/pages/await-user/await-user.page.js"></script>
+  </body>
 </html>

@@ -1,56 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <link rel="stylesheet" href="../app/styles/css/variables.css" />
 
-<head>
-  <link rel="stylesheet" href="../app/styles/css/variables.css" />
-  
-  <link rel="stylesheet" href="../app/styles/css/game.page.css" />
-</head>
+    <link rel="stylesheet" href="../app/styles/css/game.page.css" />
+  </head>
 
-<body>
-  <main class="game">
-    <header class="game__header">
-      <div class="game__header__chat has-message close-modal" modal-id="game-chat">
-        <img src="../app/assets/img/open-chat.svg" alt="Fechar chat">
-      </div>
+  <body>
+    <main class="game">
+      <header class="game__header">
+        <div
+          class="game__header__chat has-message close-modal"
+          modal-id="game-chat"
+        >
+          <img src="../app/assets/img/open-chat.svg" alt="Fechar chat" />
+        </div>
 
-      <span class="game__header__status pkm-centered-text"></span>
+        <span class="game__header__status pkm-centered-text"></span>
 
-      <h1 class="game__header__title pkm-title">Poké Lig4</h1>
-    </header>
+        <h1 class="game__header__title pkm-title">Poké Lig4</h1>
+      </header>
 
-    <div class="game__content">
-      <div id="game-lig4" class="game__content__lig4 pkm-card">
-        <div id="game"></div>
-      </div>
+      <div class="game__content">
+        <div id="game-lig4" class="game__content__lig4 pkm-card">
+          <div id="game"></div>
+        </div>
 
-      <div id="game-chat" class="game__content__chat pkm-card pkm-modal">
+        <div id="game-chat" class="game__content__chat pkm-card pkm-modal">
           <div class="pkm-modal__background close-modal"></div>
           <div class="pkm-modal__content">
             <h1 class="pkm-modal__content__title pkm-title">Chat</h1>
 
             <div id="chat-container" class="pkm-modal__content__list">
-              <span class="pkm-message" style="background-color: #FF6666">Texto Teste</span>
-              <span class="pkm-message" style="background-color: #333333">Texto Teste</span>
-              <span class="pkm-message" style="background-color: #FF6666">Texto Teste</span>
-              <span class="pkm-message" style="background-color: #333333">Texto Teste</span>
-              <span class="pkm-message" style="background-color: #FF6666">Texto Teste</span>
-              <span class="pkm-message" style="background-color: #333333">Texto Teste</span>
-              <span class="pkm-message" style="background-color: #FF6666">Texto Teste</span>
-              <span class="pkm-message" style="background-color: #333333">Texto Teste</span>
-              <span class="pkm-message" style="background-color: #FF6666">Texto Teste</span>
-              <span class="pkm-message" style="background-color: #333333">Texto Teste</span>
-              <span class="pkm-message" style="background-color: #FF6666">Texto Teste</span>
-              <span class="pkm-message" style="background-color: #333333">Texto Teste</span>
+              <span class="pkm-message" style="background-color: #ff6666"
+                >Texto Teste</span
+              >
+              <span class="pkm-message" style="background-color: #333333"
+                >Texto Teste</span
+              >
+              <span class="pkm-message" style="background-color: #ff6666"
+                >Texto Teste</span
+              >
+              <span class="pkm-message" style="background-color: #333333"
+                >Texto Teste</span
+              >
+              <span class="pkm-message" style="background-color: #ff6666"
+                >Texto Teste</span
+              >
+              <span class="pkm-message" style="background-color: #333333"
+                >Texto Teste</span
+              >
+              <span class="pkm-message" style="background-color: #ff6666"
+                >Texto Teste</span
+              >
+              <span class="pkm-message" style="background-color: #333333"
+                >Texto Teste</span
+              >
+              <span class="pkm-message" style="background-color: #ff6666"
+                >Texto Teste</span
+              >
+              <span class="pkm-message" style="background-color: #333333"
+                >Texto Teste</span
+              >
+              <span class="pkm-message" style="background-color: #ff6666"
+                >Texto Teste</span
+              >
+              <span class="pkm-message" style="background-color: #333333"
+                >Texto Teste</span
+              >
             </div>
 
             <form id="chat-form">
-              <input id="chat-input" class="pkm-modal__content__input pkm-input" type="text" autocomplete="off" placeholder="Digite uma mensagem..."/>
+              <input
+                id="chat-input"
+                class="pkm-modal__content__input pkm-input"
+                type="text"
+                autocomplete="off"
+                placeholder="Digite uma mensagem..."
+              />
             </form>
           </div>
-      </div>
+        </div>
 
-      <div id="game-message" class="game__content__message pkm-card pkm-modal">
+        <div
+          id="game-message"
+          class="game__content__message pkm-card pkm-modal"
+        >
           <div class="pkm-modal__background close-modal"></div>
           <div class="pkm-modal__content">
             <h1 class="pkm-modal__content__title pkm-title">Atenção!</h1>
@@ -58,12 +93,11 @@
             <div id="game-message__text" class="pkm-modal__content__text"></div>
             <button class="pkm-btn close-modal">Entendi</button>
           </div>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <script src="../app/pages/game/game.main.js"></script>
-  <script src="../app/pages/game/game.page.js"></script>
-</body>
-
+    <script src="../app/pages/game/game.main.js"></script>
+    <script src="../app/pages/game/game.page.js"></script>
+  </body>
 </html>
