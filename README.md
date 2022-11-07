@@ -1,11 +1,5 @@
 # Poké Lig4
 
-## Autores
-- Eduardo Almeida
-- Enzo Ribeiro
-- Maria Alice
-- Rafael Oliveira
-
 ## Inicialização
 - Baixar dependências:
 ```
